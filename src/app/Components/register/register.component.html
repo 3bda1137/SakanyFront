@@ -9,6 +9,8 @@
         <!-- Registeration Form -->
         <div class="col-md-7 col-lg-6 ml-auto">
             <h2 class="text-center mb-4">Register</h2>
+            <div *ngIf="errorMessage" class="alert-danger alert py-2">{{errorMessage}}</div>
+
             <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
 
                 <div class="row">
@@ -33,8 +35,6 @@
                             </div>
                         </div>
                     </div>
-
-
                     <!-- Email Address -->
                     <div class="input-group col-lg-12 mb-3">
                         <div class="input-group-prepend">
@@ -103,7 +103,7 @@
                         <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched"
                             class="w-100 d-block text-danger">
                             <div *ngIf="registerForm.get('password')?.getError('required')">Password is required.</div>
-                            <div *ngIf="registerForm.get('password')?.getError('pattern')">Enter Password Password.
+                            <div *ngIf="registerForm.get('password')?.getError('pattern')">Enter Complex Password.
                             </div>
                         </div>
                     </div>
@@ -160,9 +160,9 @@
 
                     <!-- Already Registered -->
                     <div class="text-center w-100">
-                        <p class="text-muted font-weight-bold">Already Registered?
+                        <button (click)="navigateToLogin()" class="text-muted btn border-0 border font-weight-bold">Already Registered?
                             <a class="text-primary ml-2">Login</a>
-                        </p>
+                        </button>
                     </div>
 
                 </div>
