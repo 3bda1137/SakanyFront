@@ -7,12 +7,12 @@ import { DetailesComponent } from './Components/detailes/detailes.component';
 import { PropertyComponent } from './Components/property/property.component';
 
 export const routes: Routes = [
-    { path: " ", redirectTo: "home", pathMatch: 'full' },
-    { path: "home", component: HomeComponent },
-    { path: "details", component: DetailesComponent },
-    { path: "signin", component: SigninComponent },
-    { path: "register", component: RegisterComponent },
-    //test
-    { path: "property", component: PropertyComponent },
-    { path: "**", component: NotfoundComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'details', component: DetailesComponent },
+  { path: 'signin', component: SigninComponent },
+  { path: 'register', component: RegisterComponent },
+  //test
+  { path: 'property', component: PropertyComponent },
+  { path: '**', component: NotfoundComponent },
 ];

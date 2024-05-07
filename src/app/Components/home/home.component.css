@@ -1,0 +1,73 @@
+
+.carousel-item img {
+     object-fit: cover; 
+     height: 100%; 
+     border-bottom-left-radius: 20px !important;
+     border-bottom-right-radius: 20px !important;
+     filter: blur(2px);
+}
+.carousel-item a {
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%,-50%);
+}
+
+@media (max-width:767px) {
+     #header-carousel {
+          height: auto;
+     }
+}
+/*** Header ***/
+.carousel-caption {
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     display: flex;
+     align-items: center;
+     background: rgba(0, 0, 0, 0.1);
+     z-index: 1;
+     background-color: transparent;
+   }
+   
+
+   .carousel-control-prev,
+   .carousel-control-next {
+     width: 15%;
+   }
+   
+   .carousel-control-prev-icon,
+   .carousel-control-next-icon {
+     width: 3.5rem !important;
+     height: 3.5rem !important;
+     border-radius: 3.5rem !important;
+     background-color: var(--mainColor);
+     border: 15px solid var(--mainColor)
+   }
+   
+
+/* * portfolio * */
+
+.portfolio {
+     margin-top: 2rem;
+}
+   .section-title {
+     color: #6449E7;
+     font-weight: bolder;
+     position: relative;
+     margin-left: 1rem;
+   }
+
+.section-title::before {
+     content: '';
+     position: absolute;
+     top: 0;
+     left: -15px; 
+     width: 15px; 
+     height: 100%;
+
+     background-color: #6449E7; 
+     border-radius: 5px;
+}
+
