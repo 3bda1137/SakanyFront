@@ -5,7 +5,7 @@ import { SigninComponent } from './Components/signin/signin.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { DetailesComponent } from './Components/detailes/detailes.component';
 import { PropertyComponent } from './Components/property/property.component';
-
+import { AllApartmentsComponent } from './Components/all-apartments/all-apartments.component';
 export const routes: Routes = [
 
     { path: " ", redirectTo: "home", pathMatch: 'full' },
