@@ -1,0 +1,116 @@
+<section class="gradient-custom">
+    <div class="container">
+        <div class="card-body p-4 p-md-5">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Personal info</h3>
+            <form [formGroup]="profileForm" (ngSubmit)="updateUserInfo()">
+
+              <div class="row">
+                <div class="col-md-6 mb-4">
+
+                  <div data-mdb-input-init class="form-outline form-group">
+                    <input type="text" id="userName" class="form-control form-control-lg " formControlName="userName"/>
+                    <label class="form-label" for="userName">User name</label>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4">
+
+                  <div data-mdb-input-init class="form-outline">
+                    <input type="email" id="email" class="form-control form-control-lg " formControlName="email"/>
+                    <label class="form-label" for="lastName">Email</label>
+                  </div>
+
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div data-mdb-input-init class="form-outline">
+                      <input type="tel" id="phoneNumber" class="form-control form-control-lg " formControlName="phoneNumber"/>
+                      <label class="form-label" for="phoneNumber">Phone 1</label>
+                    </div>
+
+                </div>
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div data-mdb-input-init class="form-outline">
+                    <input type="tel" id="secondPhoneNumber" class="form-control form-control-lg " formControlName="secondPhoneNumber"/>
+                    <label class="form-label" for="secondPhoneNumber">Phone 2</label>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="col-12 mb-4 pb-2">
+
+                  <div data-mdb-input-init class="form-outline">
+                    <input type="number" id="age" class="form-control form-control-lg " formControlName="age"/>
+                    <label class="form-label" for="age">Age</label>
+                  </div>
+
+                </div>
+
+                <div class="col-12 mb-4 pb-2">
+                    <div data-mdb-input-init class="form-outline">
+                      <select id="gender" class="form-control form-control-lg " formControlName="gender">
+                        <option [ngValue]="0">Male</option>  
+                        <option [ngValue]="1">Female</option>  
+                      </select>
+                      <label class="form-label" for="gender">Gender</label>
+
+                    </div>
+                  </div>
+
+                <div class="col-12 mb-4 pb-2">
+
+                  <div data-mdb-input-init class="form-outline">
+                    <select id="maritalStatus" class="form-control form-control-lg " formControlName="maritalStatus">
+                        <option [ngValue]="0">Single</option>  
+                        <option [ngValue]="1">Married</option>  
+                        <option [ngValue]="2">Engaged</option>  
+                        <option [ngValue]="3">Divorced</option>  
+                        <option [ngValue]="4">Widowed</option>  
+                    </select>
+                    <label class="form-label" for="maritalStatus">Marital status</label>
+                  </div>
+                </div>
+
+                <div class="col-12 mb-4 pb-2">
+                  <div data-mdb-input-init class="form-outline">
+                    <select id="education" class="form-control form-control-lg " formControlName="education">
+                        <option [ngValue]="0">HighSchool</option>  
+                        <option [ngValue]="1">Bachelor</option>  
+                        <option [ngValue]="2">Diploma</option>  
+                        <option [ngValue]="3">Master</option>  
+                        <option [ngValue]="4">Phd</option>  
+                    </select>
+                    <label class="form-label" for="education">Education</label>
+                  </div>
+                </div>
+
+                <div class="col-12 mb-4 pb-2">
+                  <div data-mdb-input-init class="form-outline">
+                    <input id="employment" class="form-control form-control-lg " formControlName="employment">
+                    <label class="form-label" for="employment">Employment</label>
+                  </div>
+                </div>
+
+                <div class="col-12 mb-4 pb-2">
+
+
+                  <div data-mdb-input-init class="form-outline">
+                    <label class="form-label" for="age">Job</label>
+                    <input type="text" name="job" id="job" class="form-control form-control-lg " formControlName="job"/>
+                  </div>
+
+                </div>
+
+              <div class="mt-4 pt-2">
+                <input data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg" type="submit" value="Submit" />
+              </div>
+
+            </form>
+          </div>
+    </div>
+  </section>
