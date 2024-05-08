@@ -24,7 +24,7 @@
                             <a class="nav-link" routerLink="register"> Register</a>
                         </li>
                         <li *ngIf="!IsLogin ;else logined" class="nav-item">
-                            <a class="nav-link" routerLink="Login"> Login</a>
+                            <a class="nav-link" routerLink="login"> Login</a>
                         </li>
                         <ng-template #logined>
 
@@ -38,7 +38,7 @@
                                     </li>
                                     <li><a class="dropdown-item" routerLink="#"><i class="fa fa-list"></i> DashBoard</a>
                                     </li>
-                                    <li><a class="dropdown-item" routerLink="#"><i class="fa fa-sign-out"></i>
+                                    <li><a class="dropdown-item" (click)="logout()"><i class="fa fa-sign-out"></i>
                                             Logout</a></li>
                                 </ul>
                             </li>
