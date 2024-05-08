@@ -1,313 +1,315 @@
-<div class="p-4 border border-2 my-4">
-    <div>
-        <h3 class="top-title">Property Description And Price</h3>
-        <div class="px-md-5 p-2 py-3">
-            <div class="form-group mb-3">
-                <label class="" for="PropertyTitle">Property Title</label>
-                <input class="form-control rounded-0" type="text" class="form-control rounded-0 " id="PropertyTitle"
-                    placeholder="Enter your property title">
-            </div>
-            <div class="form-group mb-3">
-                <label for="PropertyDescription">Property Description</label>
-                <textarea class="form-control bg-light rounded-0" placeholder="Describe about your property"
-                    id="PropertyDescription" rows="5 "></textarea>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-12  my-md-1 my-2">
-                    <div class="form-group">
-                        <div class="">
-                            <label class="">Select status</label>
-                            <select class="form-select  rounded-0">
-                                <option value="1" class="">Rent</option>
-                                <option value="2" class="">Sale</option>
-                            </select>
-                        </div>
-                    </div>
+<div class="container">
+    <div class="p-4 border border-2 my-4 bg-white">
+        <div>
+            <h3 class="top-title">Property Description And Price</h3>
+            <div class="px-md-5 p-2 py-3">
+                <div class="form-group mb-3">
+                    <label class="" for="PropertyTitle">Property Title</label>
+                    <input class="form-control rounded-0" type="text" class="form-control rounded-0 " id="PropertyTitle"
+                        placeholder="Enter your property title">
                 </div>
-                <div class="col-lg-4 col-md-12 my-md-1 my-2 ">
-                    <div class="form-group ">
-                        <div class="  ">
-                            <label class="">Type</label>
-                            <select class="form-select  rounded-0">
-                                <option value="1" class="">house</option>
-                                <option value="2" class="">commercial</option>
-                                <option value="3" class="">apartment</option>
-                                <option value="4" class="">lot</option>
-                                <option value="5" class="">garage</option>
-                            </select>
-                        </div>
-                    </div>
+                <div class="form-group mb-3">
+                    <label for="PropertyDescription">Property Description</label>
+                    <textarea class="form-control bg-light rounded-0" placeholder="Describe about your property"
+                        id="PropertyDescription" rows="5 "></textarea>
                 </div>
-                <div class="col-lg-4 col-md-12 my-md-1 my-2">
-                    <div class="form-group">
-                        <div class=" ">
-                            <label class="">Rooms</label>
-                            <select class="form-select   rounded-0">
-                                <option value="1" class="">1</option>
-                                <option value="2" class="">2</option>
-                                <option value="3" class="">3</option>
-                                <option value="4" class="">4</option>
-                                <option value="5" class="">5</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6 col-md-12">
-                    <div class="form-group my-md-1 my-2">
-                        <label for="price">Price</label>
-                        <input class="form-control rounded-0 " type="text" name="price" placeholder="USD" id="price">
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-12">
-                    <div class="form-group my-md-1 my-2">
-                        <label for="area">Area</label>
-                        <input class="form-control rounded-0" type="text" name="area" placeholder="Sqft" id="area">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="p-4 border border-2 my-4">
-    <div>
-        <h3 class="top-title">Property Media</h3>
-        <div class="px-md-5 p-2 py-3">
-            <div class="images  position-relative">
-                <input #fileInput multiple type="file" id="file" /><!-- (change)="onFileSelected($event) -->
-                <div class="contener w-100 position-absolute row  align-items-center justify-content-center">
-                    <!-- <i id="iconUpload" class=" fa-solid fa-cloud-arrow-up fa-2xl"></i>
-                    <h4 class="text-center ">Click Here Or Drop Files To Upload</h4> -->
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="p-4 border border-2 my-4">
-    <div>
-        <h3 class="top-title">Property Location</h3>
-        <div class="px-md-5 p-2 ">
-            <div class="row mb-3">
-                <div class="col-lg-6 col-md-12">
-                    <div class="form-group my-md-1 my-2">
-                        <label for="price">Address</label>
-                        <input class="form-control rounded-0 " type="text" name="price" placeholder="Enter Your Address"
-                            id="price">
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-12">
-                    <div class="form-group my-md-1 my-2">
-                        <label for="area">City</label>
-                        <input class="form-control rounded-0" type="text" name="area" placeholder="Enter Your City"
-                            id="area">
-                    </div>
-                </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-lg-6 col-md-12">
-                    <div class="form-group my-md-1 my-2">
-                        <label for="state">State</label>
-                        <input class="form-control rounded-0" type="text" name="state" placeholder="Enter Your State"
-                            id="state">
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-12">
-                    <div class="form-group my-md-1 my-2">
-                        <label for="country">Country</label>
-                        <input class="form-control rounded-0" type="text" name="country"
-                            placeholder="Enter Your Country" id="country">
-                    </div>
-                </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-lg-6 col-md-12">
-                    <div class="form-group my-md-1 my-2">
-                        <label for="latitude">Google Maps latitude</label>
-                        <input class="form-control rounded-0" type="text" name="latitude"
-                            placeholder="Google Maps latitude" id="latitude">
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-12">
-                    <div class="form-group my-md-1 my-2"></div>
-                    <label for="longitude">Google Maps longitude</label>
-                    <input class="form-control rounded-0" type="text" name="longitude"
-                        placeholder="Google Maps longitude" id="longitude">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="p-4 border border-2 my-4">
-    <div>
-        <h3 class="top-title">Extra Information</h3>
-        <div class="px-md-5 p-2 py-3">
-            <div class="row">
-                <div class="col-lg-4 col-md-12 dropdown faq-drop">
-                    <div class="form-group categories">
-                        <div>
-                            <label for="age">Select Age</label>
-                            <select id="age" class="form-select rounded-0">
-                                <option value="1" class="option">0-1 years</option>
-                                <option value="2" class="option">0-5 years</option>
-                                <option value="1" class="option">0-10 years</option>
-                                <option value="2" class="option">0-15 years</option>
-                                <option value="1" class="option">0-20 years</option>
-                                <option value="2" class="option">0-50 years</option>
-                                <option value="1" class="option">50+ years</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-12 dropdown faq-drop">
-                    <div class="form-group categories">
-                        <div>
-                            <label for="rooms">Select Rooms</label>
-                            <select id="rooms" class="form-select  rounded-0">
-                                <option value="1" class="option">1</option>
-                                <option value="2" class="option">2</option>
-                                <option value="1" class="option">3</option>
-                                <option value="2" class="option">4</option>
-                                <option value="1" class="option">5</option>
-                                <option value="2" class="option">6</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-12 ">
-                    <div class="">
-                        <div class="">
-                            <label for="bathrooms">Select Bathrooms</label>
-                            <select id="bathrooms" class="form-select   rounded-0">
-                                <option value="1" class="option">1</option>
-                                <option value="2" class="option">2</option>
-                                <option value="1" class="option">3</option>
-                                <option value="2" class="option">4</option>
-                                <option value="1" class="option">5</option>
-                                <option value="2" class="option">6</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="p-4 border border-2 my-4">
-    <div>
-        <h3 class="top-title">Property Features</h3>
-        <div class="px-md-5 p-2 py-3">
-            <div class="">
-                <div class="col-md-12 d-flex flex-wrap">
-                    <div class="px-3 mx-1 py-2">
-                        <div class="form-check ">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">Air Conditioning</label>
-                        </div>
-                    </div>
-                    <div class="px-3 mx-1 py-2">
-                        <div class="form-check ">
-                            <input class="form-check-input" type="checkbox" value="" id="check-b">
-                            <label class="form-check-label" for="check-b">Swimming Pool</label>
-                        </div>
-                    </div>
-                    <div class="px-3 mx-1 py-2">
-                        <div class="form-check ">
-                            <input class="form-check-input" type="checkbox" value="" id="check-c">
-                            <label class="form-check-label" for="check-c">Central Heating</label>
-                        </div>
-                    </div>
-                    <div class="px-3 mx-1 py-2">
-                        <div class="form-check ">
-                            <input class="form-check-input" type="checkbox" value="" id="check-d">
-                            <label class="form-check-label" for="check-d">Laundry Room</label>
-                        </div>
-                    </div>
-                    <div class="px-3 mx-1 py-2">
-                        <div class="form-check ">
-                            <input class="form-check-input" type="checkbox" value="" id="check-e">
-                            <label class="form-check-label" for="check-e">Gym</label>
-                        </div>
-                    </div>
-                    <div class="px-3 mx-1 py-2">
-                        <div class="form-check ">
-                            <input class="form-check-input" type="checkbox" value="" id="check-g">
-                            <label class="form-check-label" for="check-g">Alarm</label>
-                        </div>
-                    </div>
-                    <div class="px-3 mx-1 py-2">
-                        <div class="form-check ">
-                            <input class="form-check-input" type="checkbox" value="" id="check-h">
-                            <label class="form-check-label" for="check-h">Window Covering</label>
-                        </div>
-                    </div>
-                    <div class="px-3 mx-1 py-2">
-                        <div class="form-check ">
-                            <input class="form-check-input" type="checkbox" value="" id="check-i">
-                            <label class="form-check-label" for="check-i">Refrigerator</label>
-                        </div>
-                    </div>
-                    <div class="px-3 mx-1 py-2">
-                        <div class="form-check ">
-                            <input class="form-check-input" type="checkbox" value="" id="check-j">
-                            <label class="form-check-label" for="check-j">TV Cable & WIFI</label>
-                        </div>
-                    </div>
-                    <div class="px-3 mx-1 py-2">
-                        <div class="form-check ">
-                            <input class="form-check-input" type="checkbox" value="" id="check-k">
-                            <label class="form-check-label" for="check-k">Microwave</label>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
-<div class="p-4 border border-2 my-4">
-    <div>
-        <h3 class="top-title">Contact Information</h3>
-        <div class="px-md-5 p-2 ">
-            <div class="row">
-                <div class="col-lg-6 col-md-12">
-                    <p>
-                        <label for="con-name">Name</label>
-                        <input class="form-control rounded-0" type="text" placeholder="Enter Your Name" id="con-name"
-                            name="con-name">
-                    </p>
-                </div>
-                <div class="col-lg-6 col-md-12">
-                    <p>
-                        <label for="con-user">Username</label>
-                        <input class="form-control rounded-0" type="text" placeholder="Enter Your Username"
-                            id="con-user" name="con-user">
-                    </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6 col-md-12">
-                    <p class="no-mb first">
-                        <label for="con-email">Email</label>
-                        <input class="form-control rounded-0" type="email" placeholder="Enter Your Email" id="con-email"
-                            name="con-email">
-                    </p>
-                </div>
-                <div class="col-lg-6 col-md-12">
-                    <p class="no-mb last">
-                        <label for="con-phn">Phone</label>
-                        <input class="form-control rounded-0" type="text" placeholder="Enter Your Phone Number"
-                            id="con-phn" name="con-phn">
-                    </p>
-                </div>
-            </div>
-            <div class="">
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="prperty-submit-button">
-                            <button type="button" class="btn rounded-0  w-auto px-3 py-2 bg-btn">Submit
-                                Property</button>
+                    <div class="col-lg-4 col-md-12  my-md-1 my-2">
+                        <div class="form-group">
+                            <div class="">
+                                <label class="">Select status</label>
+                                <select class="form-select  rounded-0">
+                                    <option value="1" class="">Rent</option>
+                                    <option value="2" class="">Sale</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 my-md-1 my-2 ">
+                        <div class="form-group ">
+                            <div class="  ">
+                                <label class="">Type</label>
+                                <select class="form-select  rounded-0">
+                                    <option value="1" class="">house</option>
+                                    <option value="2" class="">commercial</option>
+                                    <option value="3" class="">apartment</option>
+                                    <option value="4" class="">lot</option>
+                                    <option value="5" class="">garage</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 my-md-1 my-2">
+                        <div class="form-group">
+                            <div class=" ">
+                                <label class="">Rooms</label>
+                                <select class="form-select   rounded-0">
+                                    <option value="1" class="">1</option>
+                                    <option value="2" class="">2</option>
+                                    <option value="3" class="">3</option>
+                                    <option value="4" class="">4</option>
+                                    <option value="5" class="">5</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-group my-md-1 my-2">
+                            <label for="price">Price</label>
+                            <input class="form-control rounded-0 " type="text" name="price" placeholder="USD" id="price">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-group my-md-1 my-2">
+                            <label for="area">Area</label>
+                            <input class="form-control rounded-0" type="text" name="area" placeholder="Sqft" id="area">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="p-4 border border-2 my-4">
+        <div>
+            <h3 class="top-title">Property Media</h3>
+            <div class="px-md-5 p-2 py-3">
+                <div class="images  position-relative">
+                    <input #fileInput multiple type="file" id="file" /><!-- (change)="onFileSelected($event) -->
+                    <div class="contener w-100 position-absolute row  align-items-center justify-content-center">
+                        <!-- <i id="iconUpload" class=" fa-solid fa-cloud-arrow-up fa-2xl"></i>
+                        <h4 class="text-center ">Click Here Or Drop Files To Upload</h4> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="p-4 border border-2 my-4">
+        <div>
+            <h3 class="top-title">Property Location</h3>
+            <div class="px-md-5 p-2 ">
+                <div class="row mb-3">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-group my-md-1 my-2">
+                            <label for="price">Address</label>
+                            <input class="form-control rounded-0 " type="text" name="price" placeholder="Enter Your Address"
+                                id="price">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-group my-md-1 my-2">
+                            <label for="area">City</label>
+                            <input class="form-control rounded-0" type="text" name="area" placeholder="Enter Your City"
+                                id="area">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-group my-md-1 my-2">
+                            <label for="state">State</label>
+                            <input class="form-control rounded-0" type="text" name="state" placeholder="Enter Your State"
+                                id="state">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-group my-md-1 my-2">
+                            <label for="country">Country</label>
+                            <input class="form-control rounded-0" type="text" name="country"
+                                placeholder="Enter Your Country" id="country">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-group my-md-1 my-2">
+                            <label for="latitude">Google Maps latitude</label>
+                            <input class="form-control rounded-0" type="text" name="latitude"
+                                placeholder="Google Maps latitude" id="latitude">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-group my-md-1 my-2"></div>
+                        <label for="longitude">Google Maps longitude</label>
+                        <input class="form-control rounded-0" type="text" name="longitude"
+                            placeholder="Google Maps longitude" id="longitude">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="p-4 border border-2 my-4">
+        <div>
+            <h3 class="top-title">Extra Information</h3>
+            <div class="px-md-5 p-2 py-3">
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 dropdown faq-drop">
+                        <div class="form-group categories">
+                            <div>
+                                <label for="age">Select Age</label>
+                                <select id="age" class="form-select rounded-0">
+                                    <option value="1" class="option">0-1 years</option>
+                                    <option value="2" class="option">0-5 years</option>
+                                    <option value="1" class="option">0-10 years</option>
+                                    <option value="2" class="option">0-15 years</option>
+                                    <option value="1" class="option">0-20 years</option>
+                                    <option value="2" class="option">0-50 years</option>
+                                    <option value="1" class="option">50+ years</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 dropdown faq-drop">
+                        <div class="form-group categories">
+                            <div>
+                                <label for="rooms">Select Rooms</label>
+                                <select id="rooms" class="form-select  rounded-0">
+                                    <option value="1" class="option">1</option>
+                                    <option value="2" class="option">2</option>
+                                    <option value="1" class="option">3</option>
+                                    <option value="2" class="option">4</option>
+                                    <option value="1" class="option">5</option>
+                                    <option value="2" class="option">6</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 ">
+                        <div class="">
+                            <div class="">
+                                <label for="bathrooms">Select Bathrooms</label>
+                                <select id="bathrooms" class="form-select   rounded-0">
+                                    <option value="1" class="option">1</option>
+                                    <option value="2" class="option">2</option>
+                                    <option value="1" class="option">3</option>
+                                    <option value="2" class="option">4</option>
+                                    <option value="1" class="option">5</option>
+                                    <option value="2" class="option">6</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="p-4 border border-2 my-4">
+        <div>
+            <h3 class="top-title">Property Features</h3>
+            <div class="px-md-5 p-2 py-3">
+                <div class="">
+                    <div class="col-md-12 d-flex flex-wrap">
+                        <div class="px-3 mx-1 py-2">
+                            <div class="form-check ">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">Air Conditioning</label>
+                            </div>
+                        </div>
+                        <div class="px-3 mx-1 py-2">
+                            <div class="form-check ">
+                                <input class="form-check-input" type="checkbox" value="" id="check-b">
+                                <label class="form-check-label" for="check-b">Swimming Pool</label>
+                            </div>
+                        </div>
+                        <div class="px-3 mx-1 py-2">
+                            <div class="form-check ">
+                                <input class="form-check-input" type="checkbox" value="" id="check-c">
+                                <label class="form-check-label" for="check-c">Central Heating</label>
+                            </div>
+                        </div>
+                        <div class="px-3 mx-1 py-2">
+                            <div class="form-check ">
+                                <input class="form-check-input" type="checkbox" value="" id="check-d">
+                                <label class="form-check-label" for="check-d">Laundry Room</label>
+                            </div>
+                        </div>
+                        <div class="px-3 mx-1 py-2">
+                            <div class="form-check ">
+                                <input class="form-check-input" type="checkbox" value="" id="check-e">
+                                <label class="form-check-label" for="check-e">Gym</label>
+                            </div>
+                        </div>
+                        <div class="px-3 mx-1 py-2">
+                            <div class="form-check ">
+                                <input class="form-check-input" type="checkbox" value="" id="check-g">
+                                <label class="form-check-label" for="check-g">Alarm</label>
+                            </div>
+                        </div>
+                        <div class="px-3 mx-1 py-2">
+                            <div class="form-check ">
+                                <input class="form-check-input" type="checkbox" value="" id="check-h">
+                                <label class="form-check-label" for="check-h">Window Covering</label>
+                            </div>
+                        </div>
+                        <div class="px-3 mx-1 py-2">
+                            <div class="form-check ">
+                                <input class="form-check-input" type="checkbox" value="" id="check-i">
+                                <label class="form-check-label" for="check-i">Refrigerator</label>
+                            </div>
+                        </div>
+                        <div class="px-3 mx-1 py-2">
+                            <div class="form-check ">
+                                <input class="form-check-input" type="checkbox" value="" id="check-j">
+                                <label class="form-check-label" for="check-j">TV Cable & WIFI</label>
+                            </div>
+                        </div>
+                        <div class="px-3 mx-1 py-2">
+                            <div class="form-check ">
+                                <input class="form-check-input" type="checkbox" value="" id="check-k">
+                                <label class="form-check-label" for="check-k">Microwave</label>
+                            </div>
+                        </div>
+    
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </div>
+    <div class="p-4 border border-2 my-4">
+        <div>
+            <h3 class="top-title">Contact Information</h3>
+            <div class="px-md-5 p-2 ">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <p>
+                            <label for="con-name">Name</label>
+                            <input class="form-control rounded-0" type="text" placeholder="Enter Your Name" id="con-name"
+                                name="con-name">
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <p>
+                            <label for="con-user">Username</label>
+                            <input class="form-control rounded-0" type="text" placeholder="Enter Your Username"
+                                id="con-user" name="con-user">
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <p class="no-mb first">
+                            <label for="con-email">Email</label>
+                            <input class="form-control rounded-0" type="email" placeholder="Enter Your Email" id="con-email"
+                                name="con-email">
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <p class="no-mb last">
+                            <label for="con-phn">Phone</label>
+                            <input class="form-control rounded-0" type="text" placeholder="Enter Your Phone Number"
+                                id="con-phn" name="con-phn">
+                        </p>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="prperty-submit-button">
+                                <button type="button" class="btn rounded-0  w-auto px-3 py-2 bg-btn">Submit
+                                    Property</button>
+                            </div>
                         </div>
                     </div>
                 </div>

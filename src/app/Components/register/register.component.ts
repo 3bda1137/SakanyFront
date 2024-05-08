@@ -37,7 +37,7 @@ export class RegisterComponent {
     //if (this.registerForm.invalid) {
     console.log("-------invalid=True-------")
     const formData = {
-      userName: this.registerForm.value.userName,
+      Name: this.registerForm.value.userName,
       password: this.registerForm.value.password,
       email: this.registerForm.value.email,
       phoneNumber: this.registerForm.value.phoneNumber,
