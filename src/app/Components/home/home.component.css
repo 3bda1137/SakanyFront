@@ -8,8 +8,8 @@
 }
 .carousel-item a {
      position: absolute;
-     top: 50%;
-     left: 50%;
+     top: 48%;
+     left: 45%;
      transform: translate(-50%,-50%);
 }
 
@@ -79,7 +79,7 @@
 /* *Card* */
 .portfolio .card {
      position: relative;
-     height: 500px;
+     height: 400px;
      width: 100%;
      overflow: hidden;
      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
