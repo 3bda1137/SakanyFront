@@ -40,6 +40,8 @@ export class SigninComponent {
             if (respons.success == true) {
               console.log("-------success=True----------")
               console.log(respons)
+              localStorage.setItem("userToken",respons.data.token);
+              this._AccountService.setInformaionOfUser();
               this._Router.navigate(["/home"]);
             }
             else {
@@ -47,14 +49,24 @@ export class SigninComponent {
             }
           },
           error:(err)=>{
-            console.log(err)
+            console.log(err.error)
             this.errorMessage=err.error.message;
           }
         }
       )
     }
-
     navigateToRegister(){
       this._Router.navigate(["/register"]);
     }
 }
+
+
+// {
+//   "success": true,
+//   "data": {
+//       "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWJkYWxsYWgiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjExZWE5YWY2LTlkMzItNDE3Mi04NDk1LWZhMjNiMzY5NDc5NCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkNVU1RPTUVSIiwiZXhwIjoxNzE1MTYwMjQ5LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMTkvIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo0MjAwIn0.AyOtzVXGecxTzH6S76pI4jB5oZKKsypKBMu8pBSRjNU",
+//       "expired": "2024-05-08T09:24:09Z"
+//   },
+//   "message": "Login successful",
+//   "errors": null
+// }
