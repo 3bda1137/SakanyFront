@@ -6,15 +6,26 @@ import { RegisterComponent } from './Components/register/register.component';
 import { DetailesComponent } from './Components/detailes/detailes.component';
 import { PropertyComponent } from './Components/property/property.component';
 import { AllApartmentsComponent } from './Components/all-apartments/all-apartments.component';
+import { LayoutComponent } from './Components/layout/layout.component';
+import { MypropertiesComponent } from './Components/myproperties/myproperties.component';
+import { FavouriteComponent } from './Components/favourite/favourite.component';
 export const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'details', component: DetailesComponent },
+  { path: 'login', component: SigninComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'addproperty', component: PropertyComponent },
 
-    { path: " ", redirectTo: "home", pathMatch: 'full' },
-    { path: "home", component: HomeComponent },
-    { path: "details", component: DetailesComponent },
-    { path: "login", component: SigninComponent },
-    { path: "register", component: RegisterComponent },
-    { path: 'AllApartments', component: AllApartmentsComponent },
-    //test
-    { path: "property", component: PropertyComponent },
-    { path: "**", component: NotfoundComponent },
+  {
+    path: 'LayOut',
+    component: LayoutComponent,
+    children: [
+      { path: 'property', component: PropertyComponent },
+      { path: 'Myproperties', component: MypropertiesComponent },
+      { path: 'Favourite', component: FavouriteComponent },
+    ],
+  },
+
+  { path: '**', component: NotfoundComponent },
 ];

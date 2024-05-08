@@ -1,6 +1,6 @@
 .footer-area {
     padding: 40px 0px;
-    background-color: #2874f0;
+    background-color: #303441;
     color: #fff;
 }
 
@@ -14,9 +14,9 @@
 }
 
 .footer-area .footer-underline {
-    height: 1px;
+    height: 2px;
     width: 70px;
-    background-color: #ddd;
+    background-color: #FF385C;
     margin: 10px 0px;
 }
 

@@ -1,0 +1,104 @@
+.DetailsContent {
+    background-color: #f5f7fb;
+}
+
+.title::after {
+    color: #FF385C;
+    display: block;
+    height: 3px;
+    font-weight: bold;
+    background-color: #FF385C;
+    content: " ";
+    width: 50px;
+    margin-top: .5rem;
+    margin-bottom: 1.5rem;
+}
+
+.author-image {
+    margin-top: 10px;
+    width: 100px;
+    height: 100px;
+}
+
+input,
+textarea {
+    display: block;
+    margin-top: 5px;
+    padding: 10px;
+    border: 1px solid gray;
+    width: 75%;
+    outline: none;
+    border-radius: 5px;
+}
+
+.submitBtn {
+    background-color: #FF385C;
+    color: #f5f7fb;
+    border: none;
+}
+
+
+
+.carousel-item img {
+    object-fit: cover;
+    height: 100%;
+  
+}
+
+.carousel-item a {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media (max-width:767px) {
+    #header-carousel {
+        height: auto;
+    }
+}
+
+
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 15%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 3.5rem !important;
+    height: 3.5rem !important;
+    border-radius: 3.5rem !important;
+    background-color: var(--mainColor);
+    border: 15px solid var(--mainColor)
+}
+
+
+
+.upload{
+    outline:  none;border:  none;
+}
+
+
+
+
+
+
+.rating {
+    display: inline-block;
+  }
+  
+  .rating input {
+    display: none;
+  }
+  
+  .rating label {
+    cursor: pointer;
+    color: #ddd; /* Default color for empty star */
+  }
+  
+  .rating input:checked ~ label {
+    color: #ffd700; /* Color for filled star */
+  }
+  
