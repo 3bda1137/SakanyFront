@@ -57,8 +57,10 @@ export class RegisterComponent {
           }
         },
         error: (err) => {
+          console.log("------------errrrrrrrrrrrror---------")
+          console.log(err);
           if (err.error.success == false) {
-            this.errorMessage=err.error.errors[0];
+            this.errorMessage=err.error.message;
           }
           console.log("------------errrrrrrrrrrrror---------")
           console.log(err)
