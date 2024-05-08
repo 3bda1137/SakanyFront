@@ -25,7 +25,7 @@
 /* *Card* */
 .portfolio .card {
      position: relative;
-     height: 500px;
+     height: 400px;
      width: 100%;
      overflow: hidden;
      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
@@ -190,3 +190,46 @@ list-style: none;
    .show-all button:hover .arrow:before {
      right: 0;
    }
+
+   /* *Search* */
+.search-form {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-form .form-row {
+    margin-bottom: 15px;
+}
+
+.search-form .form-group {
+    position: relative;
+}
+
+.search-form .form-group label {
+    position: absolute;
+    top: -25px;
+    left: 0;
+    width: 100%;
+    font-size: 14px;
+    color: #555;
+}
+
+.search-form .form-group select {
+    padding-left: 35px;
+}
+
+.search-form .form-group i {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    color: #aaa;
+}
+
+.search-form button {
+    width: 100%;
+}
