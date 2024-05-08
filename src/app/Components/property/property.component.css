@@ -35,13 +35,13 @@ input[type="email"] :focus{
 }
 
 .images {
-    height: 250px;
+    height: 200px;
     border: #1ABC9C 4px dashed;
     cursor: pointer;
-    background-image: url("../../../assets/DefaultImages/image.png");
-    background-position: center;
+    /* background-image: url("../../../assets/DefaultImages/image.png");
+    background-position: 100%;
     background-size: contain;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
 }
 
 #iconUpload {
@@ -51,6 +51,7 @@ input[type="email"] :focus{
 
 h4[class="text-center"] {
     color: #1ABC9C;
+    font-size: 2vw !important;
 }
 
 #file {

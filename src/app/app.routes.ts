@@ -13,6 +13,7 @@ export const routes: Routes = [
     { path: "details", component: DetailesComponent },
     { path: "login", component: SigninComponent },
     { path: "register", component: RegisterComponent },
+    { path: 'AllApartments', component: AllApartmentsComponent },
     //test
     { path: "property", component: PropertyComponent },
     { path: "**", component: NotfoundComponent },
