@@ -16,6 +16,8 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './detailes.component.css',
 })
 export class DetailesComponent {
+  fileName = ' No file chosen';
+  
   constructor(private formBuilder: FormBuilder) {}
   requestForm: FormGroup = this.formBuilder.group({
     fullName: ['', Validators.required],
@@ -49,6 +51,19 @@ export class DetailesComponent {
     } else {
       // Handle form validation errors
       console.error('Form validation failed!');
+    }
+  }
+
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    if (file) {
+      if (file.name.length > 20) {
+        this.fileName = file.name.slice(0, 20) + '...';
+      } else {
+        this.fileName = file.name;
+      }
+    } else {
+      this.fileName = 'No file chosen';
     }
   }
 }

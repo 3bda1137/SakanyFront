@@ -252,7 +252,13 @@
                                 </div>
                             </div>
                             <div class="col-4">
-                                <input type="file" class="upload bg-danger text-white rounded rounded-pill p-2" />
+                                <label for="add-img-post" title="Upload Image "
+                                    class="upload text-danger border border-2 border-danger  p-2 =">
+                                    <i class="fa-solid fs-2  fa-images img-btn"></i>
+                                    <span>{{ fileName }}</span>
+                                </label>
+                                <input type="file" id="add-img-post" class="d-none" name="PostImage" accept="image"
+                                    (change)="onFileSelected($event)">
                             </div>
                         </div>
                         <hr>
@@ -263,7 +269,7 @@
                         <input type="email" class="form form-control" formControlName="emailAddress"
                             placeholder="Email Address">
                         <textarea class="form form-control" formControlName="message" placeholder="Message"></textarea>
-                        <input type="submit" class="w-25 submitBtn multiple-send-message" value="Submit Review"
+                        <input type="submit" class="submitBtn multiple-send-message" value="Submit Review"
                             [disabled]="!ratingForm.valid">
                     </form>
 
@@ -303,10 +309,13 @@
                     <hr>
                     <h3>Request Inquiry</h3>
                     <form [formGroup]="requestForm" (ngSubmit)="onSubmitRequest()">
-                        <input type="text" id="fname" formControlName="fullName" placeholder="Full Name">
-                        <input type="number" id="pnumber" formControlName="phoneNumber" placeholder="Phone Number">
-                        <input type="email" id="emailid" formControlName="emailAddress" placeholder="Email Address">
-                        <textarea formControlName="message" placeholder="Message"></textarea>
+                        <input type="text" id="fname" class="form form-control" formControlName="fullName"
+                            placeholder="Full Name">
+                        <input type="number" id="pnumber" class="form form-control" formControlName="phoneNumber"
+                            placeholder="Phone Number">
+                        <input type="email" id="emailid" class="form form-control" formControlName="emailAddress"
+                            placeholder="Email Address">
+                        <textarea formControlName="message" class="form form-control" placeholder="Message"></textarea>
                         <input type="submit" name="sendmessage" class="submitBtn multiple-send-message"
                             value="Submit Request" [disabled]="!requestForm.valid">
                     </form>
