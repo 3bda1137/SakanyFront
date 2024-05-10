@@ -34,6 +34,7 @@ export class AllApartmentsComponent {
         ownerImageUrl:
           'https://img.freepik.com/premium-psd/smiling-cartoon-businesswoman-professional-attire-generative-ai_92753-21971.jpg',
         postAddedTime: '2024-05-10T12:00:00Z',
+        isForSale: false,
       },
       {
         imageUrl:
@@ -51,6 +52,7 @@ export class AllApartmentsComponent {
         ownerImageUrl:
           'https://img.freepik.com/free-photo/young-business-woman-with-glasses-white-towel-her-head-3d-rendering_1142-51503.jpg',
         postAddedTime: '2024-05-09T09:00:00Z',
+        isForSale: true,
       },
       {
         imageUrl:
@@ -68,6 +70,7 @@ export class AllApartmentsComponent {
         ownerImageUrl:
           'https://img.freepik.com/free-photo/young-business-woman-with-glasses-white-towel-her-head-3d-rendering_1142-51503.jpg',
         postAddedTime: '2024-05-08T15:00:00Z',
+        isForSale: false,
       },
       {
         imageUrl:
@@ -85,6 +88,7 @@ export class AllApartmentsComponent {
         ownerImageUrl:
           'https://img.freepik.com/premium-psd/smiling-cartoon-businesswoman-professional-attire-generative-ai_92753-21971.jpg',
         postAddedTime: '2024-05-07T10:00:00Z',
+        isForSale: false,
       },
       {
         imageUrl:
@@ -102,6 +106,7 @@ export class AllApartmentsComponent {
         ownerImageUrl:
           'https://img.freepik.com/free-photo/young-business-woman-with-glasses-white-towel-her-head-3d-rendering_1142-51503.jpg',
         postAddedTime: '2024-05-09T09:00:00Z',
+        isForSale: true,
       },
       {
         imageUrl:
@@ -119,6 +124,7 @@ export class AllApartmentsComponent {
         ownerImageUrl:
           'https://img.freepik.com/free-photo/young-business-woman-with-glasses-white-towel-her-head-3d-rendering_1142-51503.jpg',
         postAddedTime: '2024-05-06T08:00:00Z',
+        isForSale: true,
       },
       {
         imageUrl:
@@ -136,6 +142,7 @@ export class AllApartmentsComponent {
         ownerImageUrl:
           'https://img.freepik.com/premium-psd/smiling-cartoon-businesswoman-professional-attire-generative-ai_92753-21971.jpg',
         postAddedTime: '2024-05-05T14:00:00Z',
+        isForSale: false,
       },
     ];
   }
