@@ -9,6 +9,7 @@ import { AllApartmentsComponent } from './Components/all-apartments/all-apartmen
 import { LayoutComponent } from './Components/layout/layout.component';
 import { MypropertiesComponent } from './Components/myproperties/myproperties.component';
 import { FavouriteComponent } from './Components/favourite/favourite.component';
+import { ChangepasswordComponent } from './Components/changepassword/changepassword.component';
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
@@ -17,6 +18,8 @@ export const routes: Routes = [
   { path: 'login', component: SigninComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'addproperty', component: PropertyComponent },
+  { path: 'changepassword', component: ChangepasswordComponent },
+
 
   {
     path: 'LayOut',
