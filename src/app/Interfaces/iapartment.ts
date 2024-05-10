@@ -5,6 +5,7 @@ export interface IApartment {
   id: number;
   name: string;
   type: string;
+  isForSale: boolean;
   numOfBedrooms: number;
   numOfBathrooms: number;
   Area: number;
