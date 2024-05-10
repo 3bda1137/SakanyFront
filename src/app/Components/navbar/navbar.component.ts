@@ -11,21 +11,25 @@ import { AccountService } from '../../Services/account.service';
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent {
+  IsLogin: boolean = false;
   constructor(private _AccountService: AccountService) {
-
     this._AccountService.userInfo.subscribe({
       next: () => {
         if (_AccountService.userInfo.getValue() != null) {
           this.IsLogin = true;
+          console.log("----------IsLogin----------")
+          console.log(this.IsLogin)
         }
         else {
           this.IsLogin = false;
+          console.log("----------IsLogin----------")
+          console.log(this.IsLogin)
         }
       }
     })
   }
 
-  IsLogin: boolean = false;
+  
 
   logout()
   {

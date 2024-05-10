@@ -26,21 +26,23 @@
                     <a class="nav-link" routerLink="register"> Register</a>
                 </li>
                 <li *ngIf="!IsLogin ;else logined" class="nav-item">
-                    <a class="nav-link" routerLink="Login"> Login</a>
+                    <a class="nav-link" routerLink="login"> Login</a>
                 </li>
                 <ng-template #logined>
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                           <img class="rounded rounded-circle loginUserImg " src="assets/images/ts-1.jpg" alt=""> Lizza clirk
+                            <img class="rounded rounded-circle loginUserImg " src="assets/images/ts-1.jpg" alt=""> Lizza
+                            clirk
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" routerLink="#"><i class="fa fa-user"></i> Profile</a>
                             </li>
                             <li><a class="dropdown-item" routerLink="LayOut"><i class="fa fa-list"></i> DashBoard</a>
                             </li>
-                            <li><a class="dropdown-item" routerLink="#"><i class="fa fa-sign-out"></i>Logout</a></li>
+                            <li><a class="dropdown-item" (click)="logout()"><i class="fa fa-sign-out"></i>Logout</a>
+                            </li>
                         </ul>
                     </li>
                 </ng-template>
