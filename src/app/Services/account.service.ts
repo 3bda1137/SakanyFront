@@ -28,11 +28,13 @@ export class AccountService {
 
   }
   setInformaionOfUser() {
-    
     let userToken = JSON.stringify(localStorage.getItem("userToken"));
     let decodedToken: any = jwtDecode(userToken);
     this.userInfo.next(decodedToken);
     console.log("--------setInformaionOfUser---------")
     console.log(this.userInfo.getValue())
+    const nameIdentifier = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'];
+    console.log("----------------------------")
+    console.log(nameIdentifier);
   }
 }

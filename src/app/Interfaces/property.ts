@@ -1,22 +1,17 @@
 export interface Property {
-    title: string;
-    description: string;
-    status: string;
-    type: string;
-    rooms: number;
-    price: number;
-    area: number;
-    address: string;
-    city: string;
-    state: string;
-    country: string;
-    latitude: number;
-    longitude: number;
-    age: string;
-    bathrooms: number;
-    features: string[];
-    name: string;
-    username: string;
-    email: string;
-    phone: string;
+    Title: string;
+    Description: string;
+    Status: string;
+    Type: string;
+    RoomsNumber: number;
+    Price: number;
+    Area: number;
+    Governorate: string;
+    City: string;
+    Age: string;
+    BathroomNumber: number;
+    Name: string;
+    UserName: string;
+    Email: string;
+    Phone: string;
 }
