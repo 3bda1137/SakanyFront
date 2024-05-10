@@ -2,73 +2,120 @@
 <section class="portfolio bg-white-1 rec-pro">
      <div class="container">
           <div class="row">
+               <!-- Search Form -->
                <div class="section-title col-md-5">
-                    <h4 class="text-dark">Available Apartments</h4>
-                    <h2>For Rent</h2>
+                    <form>
+                         <div class="inner-form">
+                              <div class="input-field first-wrap">
+                                   <div class="input-select">
+                                        <select data-trigger="" name="choices-single-defaul">
+                                             <option disabled selected class="placeholder">Select Governorate</option>
+                                             <option>Option</option>
+                                             <option>Option</option>
+                                             <option>Option</option>
+                                        </select>
+                                   </div>
+                              </div>
+                              <div class="input-field second-wrap">
+                                   <div class="input-select">
+                                        <select data-trigger="" name="choices-single-defaul">
+                                             <option disabled selected class="placeholder">Select City</option>
+                                             <option>Option</option>
+                                             <option>Option</option>
+                                             <option>Option</option>
+                                        </select>
+                                   </div>
+                              </div>
+                              <div class="input-field third-wrap">
+                                   <div class="input-select">
+                                        <select data-trigger="" name="choices-single-defaul">
+                                             <option disabled selected class="placeholder">Number Of Bedrooms</option>
+                                             <option *ngFor="let num of numOfBedroomsRange">{{ num }}</option>
+                                        </select>
+                                   </div>
+                              </div>
+                              <div class="input-field fourth-wrap">
+                                   <div class="input-select">
+                                        <select data-trigger="" name="choices-single-defaul">
+                                             <option disabled selected class="placeholder">Price range</option>
+                                             <option>> $100</option>
+                                             <option>$100 - $500</option>
+                                             <option>$500 - $1000</option>
+                                             <option>$1000 - $5000</option>
+                                             <option>> $5000</option>
+                                        </select>
+                                   </div>
+                              </div>
+                              <div class="input-field fifth-wrap">
+                                   <button class="btn-search" type="button">SEARCH</button>
+                              </div>
+                         </div>
+                    </form>
                </div>
           </div>
-          <div class="container mt-5">
-               <div class="row row-gap-5 all-appartments">
 
-                    <div class="col-lg-4 col-md-6 col-sm-12">
+          <!-- All Available Apartment -->
+          <div class="container my-5">
+               <div class="row row-gap-5">
+                    <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let apartment of allApartments">
                          <div class="box">
                               <div class="for-sale">For Sale</div>
                               <div class="top">
-                                   <img src="https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271__340.jpg"
-                                        alt="" />
+                                   <img [src]="apartment.imageUrl" alt="" />
                                    <button class="view-property-btn">View Property</button>
                               </div>
                               <div class="bottom">
-                                   <h3 class="apartment-title">Home In Merrick Way</h3>
+                                   <h3 class="apartment-title">{{ apartment.name }}</h3>
                                    <p class="apartment-location">
-                                        <i class="fa-solid fa-location-dot"></i>Assiut, Egypt
+                                        <i class="fa-solid fa-location-dot"></i>{{ apartment.address }}
                                    </p>
                                    <div class="advants">
                                         <div>
                                              <span>Bedrooms</span>
-                                             <div><i class="fas fa-th-large"></i><span>3</span></div>
+                                             <div><i class="fas fa-th-large"></i><span>{{ apartment.numOfBedrooms
+                                                       }}</span></div>
                                         </div>
                                         <div>
                                              <span>Bathrooms</span>
-                                             <div><i class="fas fa-shower"></i><span>3</span></div>
+                                             <div><i class="fas fa-shower"></i><span>{{ apartment.numOfBathrooms
+                                                       }}</span></div>
                                         </div>
                                         <div>
                                              <span>Type</span>
-                                             <div><i class="fa-solid fa-building"></i><span>Apartment</span>
+                                             <div><i class="fa-solid fa-building"></i><span>{{ apartment.type }}</span>
                                              </div>
                                         </div>
                                         <div>
                                              <span>Area</span>
                                              <div>
-                                                  <i class="fas fa-vector-square"></i><span>4300<span>Sq
+                                                  <i class="fas fa-vector-square"></i><span>{{ apartment.Area }}<span>Sq
                                                             Ft</span></span>
                                              </div>
                                         </div>
                                    </div>
                                    <div class="price">
-                                        <span>$540,000</span>
+                                        <span>${{ apartment.price }}</span>
                                    </div>
                               </div>
                               <div class="footer">
                                    <div class="owner-info">
                                         <div class="owner-details">
                                              <div class="owner-image">
-                                                  <img src="https://www.entireflight.com/cdn/shop/articles/airplane_landing.png?v=1697724937&width=1456"
-                                                       alt="Owner's Image">
+                                                  <img [src]="apartment.ownerImageUrl" alt="Owner's Image">
                                              </div>
-                                             <p class="owner-name">Owner Name</p>
+                                             <p class="owner-name">{{ apartment.ownerName }}</p>
                                         </div>
-                                        <p class="ad-time">Ad Time</p>
+                                        <p class="ad-time">{{ apartment.postAddedTime }}</p>
                                    </div>
                               </div>
-
-
                          </div>
                     </div>
-
                </div>
           </div>
 
+
      </div>
+
+
 </section>
 <!-- END available For Rent -->

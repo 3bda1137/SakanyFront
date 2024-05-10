@@ -1,3 +1,55 @@
+/* * Search Form * */
+.inner-form {
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: center;
+   }
+ 
+   .input-field {
+     margin: 10px;
+     flex: 1 1 200px; 
+   }
+ 
+   .input-select select {
+     width: 100%; 
+     padding: 10px;
+     border: 2px solid #ccc;
+     border-radius: 10px; 
+     background-color: #f9f9f9; 
+     font-size: 16px;
+     outline: none;
+     appearance: none;
+     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 15.5l-7-9h14l-7 9z" fill="%233a3a3a"/></svg>'); /* Custom arrow */
+     background-repeat: no-repeat;
+     background-position: right 10px center;
+     background-size: 20px auto;
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     appearance: none;
+   }
+ select option {
+     font-weight: 500;
+ }
+   .input-select select option.placeholder {
+     display: none; 
+   }
+ 
+   .btn-search {
+     padding: 10px 20px;
+     background-color:#6449E7;
+     color: white;
+     border: none;
+     border-radius: 5px;
+     cursor: pointer;
+     font-size: 16px;
+     transition: background-color 0.3s ease;
+   }
+ 
+   .btn-search:hover {
+     background-color: #4624f2;
+   }
+ 
+
 /* * portfolio * */
 
 .portfolio {
@@ -8,6 +60,7 @@
      font-weight: bolder;
      position: relative;
      margin-left: 1rem;
+     width: 100%;
    }
 
 .section-title::before {
@@ -93,13 +146,14 @@
      opacity: 1;
    }
 
- .container .box .top img {
+   .container .box .top img {
      width: 100%;
-     margin-bottom: -4px;
+     height: 350px; 
+     object-fit: cover; 
      border-top-right-radius: 10px;
      transition: 0.3s;
-
  }
+ 
  .container .box .top:hover img{
      filter: blur(3px);
    }
@@ -290,3 +344,10 @@
 .search-form button {
     width: 100%;
 }
+
+/* Media query */
+@media (max-width: 768px) {
+     .input-field {
+       flex-basis: 100%; /* Full width on smaller screens */
+     }
+   }
