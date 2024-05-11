@@ -137,7 +137,6 @@
                                 <label [ngClass]="{'d-none': image2 == null}" for="file2">
                                     <img class="w-100" *ngIf="image2" [src]="image2" alt="Selected Image">
                                 </label>
-
                             </div>
                         </div>
                         <div *ngIf="addProperty.get('Image2')?.invalid && addProperty.get('Image2')?.touched"
@@ -191,7 +190,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="p-4 border border-2 my-4 bg-white">
                 <div>
                     <h3 class="top-title">Property Location</h3>
@@ -214,26 +212,25 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-12">
+                            <div [ngClass]="{'d-none': foundedCities==false}"  class="col-lg-6 col-md-12">
                                 <div class="form-group my-md-1 my-2">
                                     <label for="area">City</label>
                                     <select formControlName="City" class="form-select rounded-0">
                                         <option *ngFor="let city of cities" [value]="city.id" class="">{{city.name}}
                                         </option>
                                     </select>
-                                    <div *ngIf="addProperty.get('City')?.invalid && addProperty.get('City')?.touched"
+                                    <!-- <div *ngIf="addProperty.get('City')?.invalid && addProperty.get('City')?.touched"
                                         class="w-100 d-block text-danger">
                                         <div *ngIf="addProperty.get('City')?.errors?.['required']">
                                             City is required.
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
             <div class="p-4 border border-2 my-4 bg-white">
                 <div>
                     <h3 class="top-title">Extra Information</h3>
@@ -308,7 +305,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="p-4 border border-2 my-4 bg-white">
                 <div>
                     <h3 class="top-title">Property Features</h3>
@@ -327,7 +323,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="p-4 border border-2 my-4 bg-white">
                 <div>
                     <h3 class="top-title">Contact Information</h3>
@@ -395,7 +390,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </form>
 </div>

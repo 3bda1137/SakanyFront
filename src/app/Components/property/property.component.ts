@@ -12,6 +12,8 @@ import { PropertyService } from '../../Services/property.service';
 import { NgxSpinnerService } from "ngx-spinner";
 import { NgxSpinnerModule } from "ngx-spinner";
 import Swal from 'sweetalert2';
+import { UserProfileService } from '../../Services/user-profile.service';
+import { UserInformation } from '../../Interfaces/user-information';
 
 @Component({
   selector: 'app-property',
@@ -20,7 +22,7 @@ import Swal from 'sweetalert2';
   standalone: true,
   imports: [CommonModule, FormsModule, ReactiveFormsModule, NgxSpinnerModule]
 })
-export class PropertyComponent {
+export class PropertyComponent implements OnInit {
 
   governorates: Governorate[] = [];
   cities: City[] = [];
@@ -31,19 +33,22 @@ export class PropertyComponent {
   selectedFile: File = new File([], '');
   fileData = new FormData();
   allData!: Property;
-
+  userInformation!: UserInformation;
   image1: string | ArrayBuffer | null = null;
   image2: string | ArrayBuffer | null = null;
   image3: string | ArrayBuffer | null = null;
   image4: string | ArrayBuffer | null = null;
-
-
+  addProperty: FormGroup;
+  foundedCities: boolean = true;
 
   constructor(
     private _GovernorateService: GovernorateService,
     private http: HttpClient,
     private _PropertyService: PropertyService,
-    private spinner: NgxSpinnerService) {
+    private spinner: NgxSpinnerService,
+    private _UserProfileService: UserProfileService) {
+
+    this.addProperty = this.createPropertyForm();
     this._GovernorateService.getGovernorates().subscribe({
       next: (response) => {
         console.log(response.data);
@@ -51,9 +56,15 @@ export class PropertyComponent {
         console.log(this.governorates)
       }
     })
+    this._UserProfileService.getUserInformation().subscribe({
+      next: (response) => {
+        this.userInformation = response.data;
+        console.log(this.userInformation)
+        this.setUserInfo();
+      }
+    })
     this.initializeFeatures();
   }
-
   ngOnInit() {
     /** spinner starts on init */
     this.spinner.show();
@@ -78,35 +89,48 @@ export class PropertyComponent {
       { id: 'check-k', name: 'Microwave', control: new FormControl(false) }
     ];
   }
-  addProperty: FormGroup = new FormGroup({
-    Title: new FormControl(null, [Validators.required]),
-    Description: new FormControl(null, [Validators.required, Validators.minLength(400)]),
-    Status: new FormControl(null, [Validators.required]),
-    Type: new FormControl(null, [Validators.required]),
-    RoomsNumber: new FormControl(null, [Validators.required]),
-    BathroomNumber: new FormControl(null, [Validators.required]),
-    Age: new FormControl(null, [Validators.required]),
-    Price: new FormControl(null, [Validators.required]),
-    Area: new FormControl(null, [Validators.required]),
-    Governorate: new FormControl(null, [Validators.required]),
-    City: new FormControl(null, [Validators.required]),
-    Name: new FormControl(null, [Validators.required]),
-    UserName: new FormControl("abdallah123", [Validators.required]),
-    Phone: new FormControl(null, [Validators.required]),
-    Email: new FormControl("aaa@gmail.com", [Validators.required]),
-    Image1: new FormControl(null, [Validators.required]),
-    Image2: new FormControl(null, [Validators.required]),
-    Image3: new FormControl(null, [Validators.required]),
-    Image4: new FormControl(null, [Validators.required]),
-  })
+  createPropertyForm(): FormGroup {
+    return new FormGroup({
+      Title: new FormControl(null, [Validators.required]),
+      Description: new FormControl(null, [Validators.required, Validators.minLength(400)]),
+      Status: new FormControl(null, [Validators.required]),
+      Type: new FormControl(null, [Validators.required]),
+      RoomsNumber: new FormControl(null, [Validators.required]),
+      BathroomNumber: new FormControl(null, [Validators.required]),
+      Age: new FormControl(null, [Validators.required]),
+      Price: new FormControl(null, [Validators.required]),
+      Area: new FormControl(null, [Validators.required]),
+      Governorate: new FormControl(null, [Validators.required]),
+      City: new FormControl(null),
+      Name: new FormControl(null, [Validators.required]),
+      UserName: new FormControl(null, [Validators.required]),
+      Phone: new FormControl(null, [Validators.required]),
+      Email: new FormControl(null, [Validators.required]),
+      Image1: new FormControl(null, [Validators.required]),
+      Image2: new FormControl(null, [Validators.required]),
+      Image3: new FormControl(null, [Validators.required]),
+      Image4: new FormControl(null, [Validators.required]),
+    });
+  }
+
+  setUserInfo(): void {
+    this.addProperty.patchValue({
+      Name: this.userInformation.Name,
+      UserName: this.userInformation.userName,
+      Phone: this.userInformation.phoneNumber,
+      Email: this.userInformation.email
+    });
+  }
 
   onChange(event: any) {
     if (event.target.value != null) {
       this._GovernorateService.getCitiesInGovernorateId(event.target.value).subscribe({
         next: (response) => {
           this.cities = response.data;
+          this.foundedCities = true;
         },
         error: (err) => {
+          this.foundedCities = false;
           this.cities = [];
         }
       })
@@ -119,8 +143,7 @@ export class PropertyComponent {
   }
 
   onFileChange(event: any) {
-    console.log("-------------onFileChange-----------")
-    console.log(event.target.id)
+
     let reader = new FileReader();
     this.selectedFile = event.target.files[0];
     reader.readAsDataURL(event.target.files[0]);
@@ -146,9 +169,7 @@ export class PropertyComponent {
   submitNewProperty() {
     this.isPanar = true;
     this.spinner.show();
-    console.log("---------checkedFeatureNames---------")
     const checkedFeatureNames = this.logCheckedFeatures();
-    console.log(checkedFeatureNames);
     const formData = {
       Title: this.addProperty.get('Title')?.value || '',
       Description: this.addProperty.get('Description')?.value || '',
@@ -176,6 +197,13 @@ export class PropertyComponent {
             //send images 
             this._PropertyService.addDependency(this.fileData, response.data).subscribe({
               next: (res) => {
+                //reset from
+                this.addProperty.reset();
+                this.image1 = null;
+                this.image2 = null;
+                this.image3 = null;
+                this.image4 = null;
+                
                 this.isPanar = false;
                 this.spinner.hide();
                 Swal.fire({
