@@ -9,6 +9,7 @@ import { AllApartmentsComponent } from './Components/all-apartments/all-apartmen
 import { LayoutComponent } from './Components/layout/layout.component';
 import { MypropertiesComponent } from './Components/myproperties/myproperties.component';
 import { FavouriteComponent } from './Components/favourite/favourite.component';
+import { DashbordComponent } from './Components/dashbord/dashbord.component';
 export const routes: Routes = [
   { path: ' ', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
@@ -24,6 +25,7 @@ export const routes: Routes = [
       { path: 'property', component: PropertyComponent },
       { path: 'Myproperties', component: MypropertiesComponent },
       { path: 'Favourite', component: FavouriteComponent },
+      { path: 'Dashbord', component: DashbordComponent },
     ],
   },
 

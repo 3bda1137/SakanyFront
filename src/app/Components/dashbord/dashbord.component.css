@@ -1,0 +1,122 @@
+.Div1 {
+    background-color: #1ec38b;
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.Div2
+{
+    background-color: #f91; /* Corrected background color value */
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+.Div3
+{
+    background-color: #6ae;
+    border-radius: 8px;
+    padding: 30px;
+}
+.Div4 {
+    background-color: #f91942; /* Corrected background color value */
+    border-radius: 8px;
+    padding: 30px;
+}
+
+i {
+    font-family: 'Lato', sans-serif;
+    font-size: 50px;
+    font-weight: 400;
+    color: white;
+}
+
+.items p,
+.items h2 {
+    font-family: 'Lato', sans-serif;
+    font-size: 40px;
+    font-weight: 400;
+    color: white;
+    margin-left: 15px;
+}
+
+.items p {
+    margin-top: -8px;
+    font-size: 20px;
+    font-weight: 200;
+}
+
+.items {
+    border-left: 2px solid white;
+}
+
+.icon {
+    margin-left: 20px;
+}
+
+h4 {
+    font-style: bold;
+    font-family: 'Lato', sans-serif;
+    font-size: larger;
+    
+}
+.container
+{
+    padding: 60px 0 ;
+    box-shadow: 0 0 20px rgba(38, 38, 38, 0.2);;
+}
+img
+{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+
+.Name
+{
+    font-size: 25px;
+    font-family: 'Lato', sans-serif;
+}
+.time
+{
+    font-family: 'Lato', sans-serif;
+    font-weight: 50;
+    color: #666;
+}
+.message
+{
+    font-family: 'Lato', sans-serif;
+    margin-top: -10px;
+    color: #666;
+}
+.box3 
+{
+    margin-top: 40px;
+    
+}
+.box4
+{
+    margin-top: 40px;
+    
+}
+
+.member
+{
+    margin-bottom: 10px;
+}
+.info 
+{
+    position: relative;
+    top: -20px;
+}
+.title
+{
+    margin-bottom: 50px;
+}
+.BuldingType
+{
+    color: #666;
+    font-size: 22px;
+    font-family: 'Lato', sans-serif;
+    margin-bottom: -15px;
+}

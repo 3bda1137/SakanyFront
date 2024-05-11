@@ -1,3 +1,4 @@
+import { NgClass } from '@angular/common';
 import { Component } from '@angular/core';
 import {
   Router,
@@ -9,8 +10,10 @@ import {
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive,NgClass],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.css',
 })
-export class LayoutComponent {}
+export class LayoutComponent {
+
+}

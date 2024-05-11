@@ -12,23 +12,20 @@ import { AccountService } from '../../Services/account.service';
 })
 export class NavbarComponent {
   constructor(private _AccountService: AccountService) {
-
     this._AccountService.userInfo.subscribe({
       next: () => {
         if (_AccountService.userInfo.getValue() != null) {
           this.IsLogin = true;
+        } else {
+          this.IsLogin = true;
         }
-        else {
-          this.IsLogin = false;
-        }
-      }
-    })
+      },
+    });
   }
 
-  IsLogin: boolean = false;
+  IsLogin: boolean = true;
 
-  logout()
-  {
+  logout() {
     this._AccountService.logout();
   }
 }
