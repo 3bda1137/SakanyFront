@@ -1,15 +1,25 @@
 import { Component } from '@angular/core';
 import { IApartment } from '../../Interfaces/iapartment';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { RentSaleDirectiveDirective } from '../../directives/rent-sale-directive.directive';
+import { PriceColorDirectiveDirective } from '../../directives/price-color-directive.directive';
 
 @Component({
   selector: 'app-all-apartments',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    RentSaleDirectiveDirective,
+    PriceColorDirectiveDirective,
+  ],
   templateUrl: './all-apartments.component.html',
   styleUrl: './all-apartments.component.css',
 })
 export class AllApartmentsComponent {
+  test: string = '';
+  Istrue: boolean = false;
   numOfBedroomsRange: number[];
 
   allApartments: IApartment[] = [];
@@ -145,5 +155,24 @@ export class AllApartmentsComponent {
         isForSale: false,
       },
     ];
+  }
+
+  selectedGov(name: string) {
+    console.log(name);
+  }
+  selectedCity(name: string) {
+    console.log(name);
+  }
+  selectedRooms(numOfRooms: any) {
+    let num: number = Number(numOfRooms);
+    console.log(num);
+  }
+  priceRange(price: any) {
+    console.log(price);
+  }
+
+  // TrackBy function ->
+  propertyTrackBy(index: number, apartment: IApartment): number {
+    return apartment.id;
   }
 }
