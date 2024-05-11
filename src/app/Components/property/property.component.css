@@ -35,9 +35,10 @@ input[type="email"] :focus{
 }
 
 .images {
-    height: 200px;
+    height: 230px;
     border: #1ABC9C 4px dashed;
     cursor: pointer;
+    overflow: hidden;
     /* background-image: url("../../../assets/DefaultImages/image.png");
     background-position: 100%;
     background-size: contain;

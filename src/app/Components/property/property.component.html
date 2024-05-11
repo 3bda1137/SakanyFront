@@ -30,7 +30,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-4 col-md-12  my-md-1 my-2">
+                        <div class="col-lg-6 col-md-12  my-md-1 my-2">
                             <div class="form-group">
                                 <div class="">
                                     <label class="">Select Status</label>
@@ -47,7 +47,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-12 my-md-1 my-2 ">
+                        <div class="col-lg-6 col-md-12 my-md-1 my-2 ">
                             <div class="form-group ">
                                 <div class="  ">
                                     <label class="">Type</label>
@@ -62,26 +62,6 @@
                                         class="w-100 d-block text-danger">
                                         <div *ngIf="addProperty.get('Type')?.errors?.['required']">
                                             Type is required.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-12 my-md-1 my-2">
-                            <div class="form-group">
-                                <div class=" ">
-                                    <label class="">Rooms</label>
-                                    <select formControlName="RoomsNumber" class="form-select   rounded-0">
-                                        <option value="1" class="">1</option>
-                                        <option value="2" class="">2</option>
-                                        <option value="3" class="">3</option>
-                                        <option value="4" class="">4</option>
-                                        <option value="5" class="">5</option>
-                                    </select>
-                                    <div *ngIf="addProperty.get('rooms')?.invalid && addProperty.get('rooms')?.touched"
-                                        class="w-100 d-block text-danger">
-                                        <div *ngIf="addProperty.get('rooms')?.errors?.['required']">
-                                            Number of rooms is required.
                                         </div>
                                     </div>
                                 </div>
@@ -128,44 +108,57 @@
                         <h3>Upload image 1</h3>
                         <div class="images d-flex justify-content-center align-items-center">
                             <div>
-                                <label for="file1">
+                                <label [ngClass]="{'d-none': image1 != null}" for="file1">
                                     <i id="iconUpload" class="fa-solid fa-cloud-arrow-up fa-2xl"></i>
                                 </label>
-                                <input formControlName="Image1" type="file" id="file1" (change)="onFileChange($event)" />
+                                <input formControlName="Image1" type="file" id="file1"
+                                    (change)="onFileChange($event)" />
+                                <label [ngClass]="{'d-none': image1 == null}" for="file1">
+                                    <img class="w-100" *ngIf="image1" [src]="image1" alt="Selected Image">
+                                </label>
                             </div>
                         </div>
                         <div *ngIf="addProperty.get('Image1')?.invalid && addProperty.get('Image1')?.touched"
-                        class="w-100 d-block text-danger">
-                        <div *ngIf="addProperty.get('Image1')?.errors?.['required']">
-                            Image1 is required.
+                            class="w-100 d-block text-danger">
+                            <div *ngIf="addProperty.get('Image1')?.errors?.['required']">
+                                Image1 is required.
+                            </div>
                         </div>
-                    </div>
                     </div>
                     <div class="col-12 col-md-3 col-sm-6 p-3">
                         <h3>Upload image 2</h3>
                         <div class="images d-flex justify-content-center align-items-center">
                             <div>
-                                <label for="file2">
+                                <label [ngClass]="{'d-none': image2 != null}" for="file2">
                                     <i id="iconUpload" class="fa-solid fa-cloud-arrow-up fa-2xl"></i>
                                 </label>
-                                <input formControlName="Image2" type="file" id="file2" (change)="onFileChange($event)" />
+                                <input formControlName="Image2" type="file" id="file2"
+                                    (change)="onFileChange($event)" />
+                                <label [ngClass]="{'d-none': image2 == null}" for="file2">
+                                    <img class="w-100" *ngIf="image2" [src]="image2" alt="Selected Image">
+                                </label>
+
                             </div>
                         </div>
                         <div *ngIf="addProperty.get('Image2')?.invalid && addProperty.get('Image2')?.touched"
-                        class="w-100 d-block text-danger">
-                        <div *ngIf="addProperty.get('Image2')?.errors?.['required']">
-                            Image2 is required.
+                            class="w-100 d-block text-danger">
+                            <div *ngIf="addProperty.get('Image2')?.errors?.['required']">
+                                Image2 is required.
+                            </div>
                         </div>
-                    </div>
                     </div>
                     <div class="col-12 col-md-3 col-sm-6 p-3">
                         <h3>Upload image 3</h3>
                         <div class="images d-flex justify-content-center align-items-center">
                             <div>
-                                <label for="file3">
+                                <label [ngClass]="{'d-none': image3 != null}" for="file3">
                                     <i id="iconUpload" class="fa-solid fa-cloud-arrow-up fa-2xl"></i>
                                 </label>
-                                <input formControlName="Image3" type="file" id="file3" (change)="onFileChange($event)" />
+                                <input formControlName="Image3" type="file" id="file3"
+                                    (change)="onFileChange($event)" />
+                                <label [ngClass]="{'d-none': image3 == null}" for="file3">
+                                    <img class="w-100" *ngIf="image3" [src]="image3" alt="Selected Image">
+                                </label>
                             </div>
                         </div>
                         <div *ngIf="addProperty.get('Image3')?.invalid && addProperty.get('Image3')?.touched"
@@ -179,10 +172,14 @@
                         <h3>Upload image 4</h3>
                         <div class="images d-flex justify-content-center align-items-center">
                             <div>
-                                <label for="file4">
+                                <label [ngClass]="{'d-none': image4 != null}" for="file4">
                                     <i id="iconUpload" class="fa-solid fa-cloud-arrow-up fa-2xl"></i>
                                 </label>
-                                <input formControlName="Image4" type="file" id="file4" (change)="onFileChange($event)" />
+                                <input formControlName="Image4" type="file" id="file4"
+                                    (change)="onFileChange($event)" />
+                                <label [ngClass]="{'d-none': image4 == null}" for="file4">
+                                    <img class="w-100" *ngIf="image4" [src]="image4" alt="Selected Image">
+                                </label>
                             </div>
                         </div>
                         <div *ngIf="addProperty.get('Image4')?.invalid && addProperty.get('Image4')?.touched"
@@ -383,9 +380,13 @@
                         <div class="">
                             <div class="row">
                                 <div class="col-md-12">
+                                    <ngx-spinner *ngIf="isPanar" bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff"
+                                        type="square-jelly-box" [fullScreen]="true">
+                                        <p style="color: white"> Loading... </p>
+                                    </ngx-spinner>
                                     <div class="prperty-submit-button">
                                         <button [disabled]="!addProperty.valid" type="submit"
-                                            class="btn rounded-0  w-auto px-3 py-2 bg-btn">Submit
+                                            class="btn rounded-0  w-auto px-3 py-2 bg-btn">Add
                                             Property</button>
                                     </div>
                                 </div>

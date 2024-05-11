@@ -9,13 +9,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { Property } from '../../Interfaces/property';
 import { PropertyService } from '../../Services/property.service';
+import { NgxSpinnerService } from "ngx-spinner";
+import { NgxSpinnerModule } from "ngx-spinner";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-property',
   templateUrl: './property.component.html',
   styleUrls: ['./property.component.css'],
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule]
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, NgxSpinnerModule]
 })
 export class PropertyComponent {
 
@@ -23,15 +26,24 @@ export class PropertyComponent {
   cities: City[] = [];
   images: any = [];
   checkedFeatureNames: string[] = [];
-
+  isPanar: boolean = false;
   image: any;
   selectedFile: File = new File([], '');
   fileData = new FormData();
   allData!: Property;
+
+  image1: string | ArrayBuffer | null = null;
+  image2: string | ArrayBuffer | null = null;
+  image3: string | ArrayBuffer | null = null;
+  image4: string | ArrayBuffer | null = null;
+
+
+
   constructor(
     private _GovernorateService: GovernorateService,
     private http: HttpClient,
-    private _PropertyService: PropertyService) {
+    private _PropertyService: PropertyService,
+    private spinner: NgxSpinnerService) {
     this._GovernorateService.getGovernorates().subscribe({
       next: (response) => {
         console.log(response.data);
@@ -42,6 +54,14 @@ export class PropertyComponent {
     this.initializeFeatures();
   }
 
+  ngOnInit() {
+    /** spinner starts on init */
+    this.spinner.show();
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
+    }, 5000);
+  }
   propertyFeatures: { id: string, name: string, control: FormControl }[] = [];
 
   initializeFeatures(): void {
@@ -99,16 +119,33 @@ export class PropertyComponent {
   }
 
   onFileChange(event: any) {
+    console.log("-------------onFileChange-----------")
+    console.log(event.target.id)
     let reader = new FileReader();
     this.selectedFile = event.target.files[0];
     reader.readAsDataURL(event.target.files[0]);
     reader.onload = () => {
+      if (event.target.id == 'file1') {
+        this.image1 = reader.result;
+      }
+      else if (event.target.id == 'file2') {
+        this.image2 = reader.result;
+      }
+      else if (event.target.id == 'file3') {
+        this.image3 = reader.result;
+      }
+      else if (event.target.id == 'file4') {
+        this.image4 = reader.result;
+      }
+
       this.images.push(reader.result);
       this.fileData.append('file', this.selectedFile, this.selectedFile.name);
     };
   }
 
   submitNewProperty() {
+    this.isPanar = true;
+    this.spinner.show();
     console.log("---------checkedFeatureNames---------")
     const checkedFeatureNames = this.logCheckedFeatures();
     console.log(checkedFeatureNames);
@@ -128,7 +165,7 @@ export class PropertyComponent {
       UserName: this.addProperty.get('UserName')?.value || '',
       Email: this.addProperty.get('Email')?.value || '',
       Phone: this.addProperty.get('Phone')?.value || '',
-      featsures:checkedFeatureNames,
+      featsures: checkedFeatureNames,
     };
     this._PropertyService.addProperty(formData)
       .subscribe({
@@ -139,9 +176,30 @@ export class PropertyComponent {
             //send images 
             this._PropertyService.addDependency(this.fileData, response.data).subscribe({
               next: (res) => {
+                this.isPanar = false;
+                this.spinner.hide();
+                Swal.fire({
+                  title: "The property has been added successfully",
+                  showClass: {
+                    popup: `
+                      animate__animated
+                      animate__fadeInUp
+                      animate__faster
+                    `
+                  },
+                  hideClass: {
+                    popup: `
+                      animate__animated
+                      animate__fadeOutDown
+                      animate__faster
+                    `
+                  }
+                });
                 console.log(res)
               },
               error: (err) => {
+                this.isPanar = false;
+                this.spinner.hide();
                 console.log(err)
               }
             })
@@ -149,6 +207,8 @@ export class PropertyComponent {
         },
         error: (error) => {
           console.error(error);
+          this.isPanar = false;
+          this.spinner.hide();
         }
       });
   }
