@@ -8,8 +8,10 @@
                          <div class="inner-form">
                               <div class="input-field first-wrap">
                                    <div class="input-select">
-                                        <select data-trigger="" name="choices-single-defaul">
+                                        <select #govSelected (change)="selectedGov(govSelected.value)" data-trigger=""
+                                             name="choices-single-defaul">
                                              <option disabled selected class="placeholder">Select Governorate</option>
+                                             <option>All</option>
                                              <option>Option</option>
                                              <option>Option</option>
                                              <option>Option</option>
@@ -18,8 +20,10 @@
                               </div>
                               <div class="input-field second-wrap">
                                    <div class="input-select">
-                                        <select data-trigger="" name="choices-single-defaul">
+                                        <select #citySelected (change)="selectedCity(citySelected.value)"
+                                             data-trigger="" name="choices-single-defaul">
                                              <option disabled selected class="placeholder">Select City</option>
+                                             <option>All</option>
                                              <option>Option</option>
                                              <option>Option</option>
                                              <option>Option</option>
@@ -28,16 +32,20 @@
                               </div>
                               <div class="input-field third-wrap">
                                    <div class="input-select">
-                                        <select data-trigger="" name="choices-single-defaul">
+                                        <select #roomsSelected (change)="selectedRooms(roomsSelected.value)"
+                                             data-trigger="" name="choices-single-defaul">
                                              <option disabled selected class="placeholder">Number Of Bedrooms</option>
+                                             <option>All</option>
                                              <option *ngFor="let num of numOfBedroomsRange">{{ num }}</option>
                                         </select>
                                    </div>
                               </div>
                               <div class="input-field fourth-wrap">
                                    <div class="input-select">
-                                        <select data-trigger="" name="choices-single-defaul">
+                                        <select #priceRangeSelected (change)="priceRange(priceRangeSelected.value)"
+                                             data-trigger="" name="choices-single-defaul">
                                              <option disabled selected class="placeholder">Price range</option>
+                                             <option>All</option>
                                              <option>> $100</option>
                                              <option>$100 - $500</option>
                                              <option>$500 - $1000</option>
@@ -48,6 +56,7 @@
                               </div>
                               <div class="input-field fifth-wrap">
                                    <button class="btn-search" type="button">SEARCH</button>
+
                               </div>
                          </div>
                     </form>
@@ -57,9 +66,14 @@
           <!-- All Available Apartment -->
           <div class="container my-5">
                <div class="row row-gap-5">
-                    <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let apartment of allApartments">
+                    <div class="col-lg-4 col-md-6 col-sm-12"
+                         *ngFor="let apartment of allApartments; trackBy:propertyTrackBy">
                          <div class="box">
-                              <div class="for-sale">{{apartment.isForSale? "For Sale":"For Rent"}}</div>
+                              <div class="for-sale" RentSaleDirective
+                                   shapeColor='{{apartment.isForSale?"#6449E7":"#ff385c"}}'>
+                                   {{ apartment.isForSale ? "For Sale" : "For Rent" }}
+                              </div>
+
                               <div class="top">
                                    <img [src]="apartment.imageUrl" alt="" />
                                    <button class="view-property-btn">View Property</button>
@@ -93,7 +107,8 @@
                                              </div>
                                         </div>
                                    </div>
-                                   <div class="price">
+                                   <div class="price" PriceColorDirective
+                                        shapeColor='{{apartment.isForSale?"#6449E7":"#ff385c"}}'>
                                         <span>${{ apartment.price }}</span>
                                    </div>
                               </div>
@@ -108,6 +123,7 @@
                                         <p class="ad-time">{{ apartment.postAddedTime }}</p>
                                    </div>
                               </div>
+
                          </div>
                     </div>
                </div>
