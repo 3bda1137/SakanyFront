@@ -59,7 +59,7 @@
                <div class="row row-gap-5">
                     <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let apartment of allApartments">
                          <div class="box">
-                              <div class="for-sale">For Sale</div>
+                              <div class="for-sale">{{apartment.isForSale? "For Sale":"For Rent"}}</div>
                               <div class="top">
                                    <img [src]="apartment.imageUrl" alt="" />
                                    <button class="view-property-btn">View Property</button>
