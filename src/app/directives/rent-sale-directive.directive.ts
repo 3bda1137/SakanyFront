@@ -13,7 +13,6 @@ import {
 export class RentSaleDirectiveDirective implements AfterViewInit {
   private pseudoElement: HTMLElement;
   @Input() shapeColor: string = '#6449E7';
-  @Input() ttttt: string = '';
 
   constructor(private elementRef: ElementRef, private renderer: Renderer2) {
     this.pseudoElement = this.renderer.createElement('div');
@@ -29,11 +28,12 @@ export class RentSaleDirectiveDirective implements AfterViewInit {
     this.renderer.setStyle(
       this.pseudoElement,
       'borderColor',
+
       `transparent transparent transparent  ${this.shapeColor}`
     );
     this.renderer.setStyle(this.pseudoElement, 'position', 'absolute');
-    this.renderer.setStyle(this.pseudoElement, 'left', '74px');
-    this.renderer.setStyle(this.pseudoElement, 'top', '4px');
+    this.renderer.setStyle(this.pseudoElement, 'left', '68px');
+    this.renderer.setStyle(this.pseudoElement, 'top', '2px');
     this.renderer.setStyle(this.pseudoElement, 'transform', 'translateY(0%)');
     this.renderer.setStyle(this.pseudoElement, 'zIndex', '55');
     this.renderer.setStyle(
