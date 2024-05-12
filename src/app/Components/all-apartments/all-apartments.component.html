@@ -9,24 +9,27 @@
                               <div class="input-field first-wrap">
                                    <div class="input-select">
                                         <select #govSelected (change)="selectedGov(govSelected.value)" data-trigger=""
-                                             name="choices-single-defaul">
+                                             name="choices-single-defaul" (change)="onChange($event)">
                                              <option disabled selected class="placeholder">Select Governorate</option>
                                              <option>All</option>
-                                             <option>Option</option>
-                                             <option>Option</option>
-                                             <option>Option</option>
+                                             <option *ngFor="let gov of governorates" value="{{gov.governorateID}}">
+                                                  {{gov.name}}</option>
+
                                         </select>
                                    </div>
                               </div>
                               <div class="input-field second-wrap">
                                    <div class="input-select">
                                         <select #citySelected (change)="selectedCity(citySelected.value)"
-                                             data-trigger="" name="choices-single-defaul">
+                                             [disabled]="cities.length === 0 ? true : '' " data-trigger=""
+                                             [style.background-color]='cities.length!=0?"#f9f9f9":"gainsboro"'
+                                             [style.background-image]="cities.length === 0 ? 'none' : arrow_bgImage"
+                                             name="choices-single-defaul">
                                              <option disabled selected class="placeholder">Select City</option>
                                              <option>All</option>
-                                             <option>Option</option>
-                                             <option>Option</option>
-                                             <option>Option</option>
+                                             <option *ngFor="let city of cities" [value]="city.id" class="">
+                                                  {{city.name}}
+                                             </option>
                                         </select>
                                    </div>
                               </div>
@@ -36,7 +39,11 @@
                                              data-trigger="" name="choices-single-defaul">
                                              <option disabled selected class="placeholder">Number Of Bedrooms</option>
                                              <option>All</option>
-                                             <option *ngFor="let num of numOfBedroomsRange">{{ num }}</option>
+                                             <option>1</option>
+                                             <option>2</option>
+                                             <option>3</option>
+                                             <option>4</option>
+                                             <option>5</option>
                                         </select>
                                    </div>
                               </div>
@@ -54,10 +61,7 @@
                                         </select>
                                    </div>
                               </div>
-                              <div class="input-field fifth-wrap d-flex justify-content-center ">
-                                   <button class="btn-search" type="button">SEARCH</button>
 
-                              </div>
                          </div>
                     </form>
                </div>
