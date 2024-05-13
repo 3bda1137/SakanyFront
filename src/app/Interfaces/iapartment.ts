@@ -3,14 +3,15 @@ export interface IApartment {
   description: string;
   price: number;
   id: number;
-  name: string;
+  title: string;
   type: string;
   isForSale: boolean;
-  numOfBedrooms: number;
+  numOfRooms: number;
   numOfBathrooms: number;
-  Area: number;
+  area: number;
   address: string;
   ownerName: string;
   ownerImageUrl: string;
   postAddedTime: string;
+  status: string;
 }

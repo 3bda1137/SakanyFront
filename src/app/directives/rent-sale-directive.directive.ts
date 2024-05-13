@@ -16,11 +16,11 @@ export class RentSaleDirectiveDirective implements AfterViewInit {
 
   constructor(private elementRef: ElementRef, private renderer: Renderer2) {
     this.pseudoElement = this.renderer.createElement('div');
-
-    elementRef.nativeElement.style.backgroundColor = `${this.shapeColor}`;
   }
 
   ngAfterViewInit() {
+    console.log(this.shapeColor);
+    this.elementRef.nativeElement.style.backgroundColor = `${this.shapeColor}`;
     this.elementRef.nativeElement.style.backgroundColor = this.shapeColor;
     this.renderer.setStyle(this.pseudoElement, 'content', '""');
     this.renderer.setStyle(this.pseudoElement, 'borderWidth', '12px');

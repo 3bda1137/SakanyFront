@@ -10,9 +10,10 @@
                                    <div class="input-select">
                                         <select #govSelected (change)="selectedGov(govSelected.value)" data-trigger=""
                                              name="choices-single-defaul" (change)="onChange($event)">
-                                             <option disabled selected class="placeholder">Select Governorate</option>
-                                             <option>All</option>
-                                             <option *ngFor="let gov of governorates" value="{{gov.governorateID}}">
+                                             <option disabled selected value=0 class="placeholder">Select Governorate
+                                             </option>
+                                             <option value=0>All</option>
+                                             <option *ngFor="let gov of governorate" value="{{gov.governorateID}}">
                                                   {{gov.name}}</option>
 
                                         </select>
@@ -25,8 +26,8 @@
                                              [style.background-color]='cities.length!=0?"#f9f9f9":"gainsboro"'
                                              [style.background-image]="cities.length === 0 ? 'none' : arrow_bgImage"
                                              name="choices-single-defaul">
-                                             <option disabled selected class="placeholder">Select City</option>
-                                             <option>All</option>
+                                             <option disabled selected value=0 class="placeholder">Select City</option>
+                                             <option value=0>All</option>
                                              <option *ngFor="let city of cities" [value]="city.id" class="">
                                                   {{city.name}}
                                              </option>
@@ -38,29 +39,31 @@
                                         <select #roomsSelected (change)="selectedRooms(roomsSelected.value)"
                                              data-trigger="" name="choices-single-defaul">
                                              <option disabled selected class="placeholder">Number Of Bedrooms</option>
-                                             <option>All</option>
-                                             <option>1</option>
-                                             <option>2</option>
-                                             <option>3</option>
-                                             <option>4</option>
-                                             <option>5</option>
+                                             <option value=0>All</option>
+                                             <option value=1>1</option>
+                                             <option value=2>2</option>
+                                             <option value=3>3</option>
+                                             <option value=4>4</option>
+                                             <option value=5>5</option>
                                         </select>
                                    </div>
                               </div>
                               <div class="input-field fourth-wrap">
                                    <div class="input-select">
-                                        <select #priceRangeSelected (change)="priceRange(priceRangeSelected.value)"
-                                             data-trigger="" name="choices-single-defaul">
+                                        <select #priceRangeSelected
+                                             (change)="selectedPriceRange(priceRangeSelected.value)" data-trigger=""
+                                             name="choices-single-defaul">
                                              <option disabled selected class="placeholder">Price range</option>
-                                             <option>All</option>
-                                             <option>less than $100</option>
-                                             <option>$100 - $500</option>
-                                             <option>$500 - $1000</option>
-                                             <option>$1000 - $5000</option>
-                                             <option>more than $5000</option>
+                                             <option value="all">All</option>
+                                             <option value="<100">less than $100</option>
+                                             <option value="100-500">$100 - $500</option>
+                                             <option value="500-1000">$500 - $1000</option>
+                                             <option value="1000-5000">$1000 - $5000</option>
+                                             <option value=">5000">more than $5000</option>
                                         </select>
                                    </div>
                               </div>
+
 
                          </div>
                     </form>
@@ -69,13 +72,13 @@
 
           <!-- All Available Apartment -->
           <div class="container my-5">
-               <div class="row row-gap-5">
+               <div class="row row-gap-5" *ngIf="allApartments.length > 0; else noResults">
                     <div class="col-lg-4 col-md-6 col-sm-12"
-                         *ngFor="let apartment of allApartments; trackBy:propertyTrackBy">
+                         *ngFor="let apartment of allApartments; let i = index ;trackBy:propertyTrackBy">
                          <div class="box">
-                              <div class="for-sale" RentSaleDirective
-                                   shapeColor='{{apartment.isForSale?"#6449E7":"#ff385c"}}'>
-                                   {{ apartment.isForSale ? "For Sale" : "For Rent" }}
+                              <div class="for-sale">
+                                   For {{ apartment.status }}
+
                               </div>
 
                               <div class="top">
@@ -83,14 +86,14 @@
                                    <button class="view-property-btn">View Property</button>
                               </div>
                               <div class="bottom">
-                                   <h3 class="apartment-title">{{ apartment.name }}</h3>
+                                   <h3 class="apartment-title">{{ apartment.title }}</h3>
                                    <p class="apartment-location">
                                         <i class="fa-solid fa-location-dot"></i>{{ apartment.address }}
                                    </p>
                                    <div class="advants">
                                         <div>
                                              <span>Bedrooms</span>
-                                             <div><i class="fas fa-th-large"></i><span>{{ apartment.numOfBedrooms
+                                             <div><i class="fas fa-th-large"></i><span>{{ apartment.numOfRooms
                                                        }}</span></div>
                                         </div>
                                         <div>
@@ -106,13 +109,12 @@
                                         <div>
                                              <span>Area</span>
                                              <div>
-                                                  <i class="fas fa-vector-square"></i><span>{{ apartment.Area }}<span>Sq
+                                                  <i class="fas fa-vector-square"></i><span>{{ apartment.area }}<span>Sq
                                                             Ft</span></span>
                                              </div>
                                         </div>
                                    </div>
-                                   <div class="price" PriceColorDirective
-                                        shapeColor='{{apartment.isForSale?"#6449E7":"#ff385c"}}'>
+                                   <div class="price">
                                         <span>{{ apartment.price | currency:'USD':'symbol':'1.0-0' }}</span>
 
                                    </div>
@@ -132,6 +134,15 @@
                          </div>
                     </div>
                </div>
+
+               <ng-template #noResults>
+                    <div class="text-center">
+                         <p class="no-results-message display-6 ">No results found for your search filters. Please try
+                              different
+                              search criteria.</p>
+                         <img src="../../../assets/NotFound.webp" alt="No Results Found Image" class="no-results-image">
+                    </div>
+               </ng-template>
           </div>
 
 

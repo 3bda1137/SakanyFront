@@ -347,6 +347,17 @@
     width: 100%;
 }
 
+
+.no-results-message {
+  color:#6449E7;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.no-results-image {
+  max-width: 500px;
+  margin-bottom: 20px;
+}
 /* Media query */
 @media (max-width: 768px) {
      .input-field {
