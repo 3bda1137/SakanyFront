@@ -75,6 +75,12 @@ export class AllApartmentsComponent implements OnInit {
           console.log(response.data.paginationInfo);
           this.allApartments = response.data.properties;
 
+          const apiUrl = 'http://localhost:5019';
+          this.allApartments.forEach((apartment) => {
+            apartment.ownerImageUrl = `${apiUrl}${apartment.ownerImageUrl}`;
+            apartment.imageUrl = `${apiUrl}${apartment.imageUrl}`;
+          });
+
           // Extract pagination info
           this.currentPage = response.data.paginationInfo.currentPage;
           this.totalPages = response.data.paginationInfo.totalPages;
