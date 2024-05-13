@@ -1,19 +1,22 @@
 import { Injectable } from '@angular/core';
 import { IApartment } from '../Interfaces/iapartment';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Observable, Observer } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ShowAllPropertiesService {
+  private baseUrl = 'http://localhost:5019/api/Property';
   pageNum: number = 0;
   pageSize: number = 6;
   numOfRooms: number = 0;
   priceRange: string = '';
   govId: number = 0;
   cityId: number = 0;
-
+  testJson: object[] = [];
   private allApartments: IApartment[] = [];
-  constructor() {
+  constructor(private httpClient: HttpClient) {
     this.allApartments = [
       {
         imageUrl:
@@ -21,17 +24,18 @@ export class ShowAllPropertiesService {
         description: 'Beautiful apartment with stunning views',
         price: 200000,
         id: 1,
-        name: 'Luxury Apartment',
+        title: 'Luxury Apartment',
         type: 'Apartment',
-        numOfBedrooms: 3,
+        numOfRooms: 3,
         numOfBathrooms: 2,
-        Area: 1500,
+        area: 1500,
         address: '123 Main St',
         ownerName: 'John Doe',
         ownerImageUrl:
           'https://img.freepik.com/premium-psd/smiling-cartoon-businesswoman-professional-attire-generative-ai_92753-21971.jpg',
         postAddedTime: '2024-05-10T12:00:00Z',
         isForSale: false,
+        status: 'Sale',
       },
       {
         imageUrl:
@@ -39,17 +43,18 @@ export class ShowAllPropertiesService {
         description: 'Cozy apartment in a quiet neighborhood',
         price: 150000,
         id: 2,
-        name: 'Cozy Apartment',
+        title: 'Cozy Apartment',
         type: 'Apartment',
-        numOfBedrooms: 2,
+        numOfRooms: 2,
         numOfBathrooms: 1,
-        Area: 1000,
+        area: 1000,
         address: '456 Elm St',
         ownerName: 'Jane Smith',
         ownerImageUrl:
           'https://img.freepik.com/free-photo/young-business-woman-with-glasses-white-towel-her-head-3d-rendering_1142-51503.jpg',
         postAddedTime: '2024-05-09T09:00:00Z',
         isForSale: true,
+        status: 'Rent',
       },
       {
         imageUrl:
@@ -57,17 +62,18 @@ export class ShowAllPropertiesService {
         description: 'Spacious apartment with modern amenities',
         price: 180000,
         id: 3,
-        name: 'Modern Apartment',
+        title: 'Modern Apartment',
         type: 'Apartment',
-        numOfBedrooms: 2,
+        numOfRooms: 2,
         numOfBathrooms: 2,
-        Area: 1200,
+        area: 1200,
         address: '789 Oak St',
         ownerName: 'Mike Johnson',
         ownerImageUrl:
           'https://img.freepik.com/free-photo/young-business-woman-with-glasses-white-towel-her-head-3d-rendering_1142-51503.jpg',
         postAddedTime: '2024-05-08T15:00:00Z',
         isForSale: false,
+        status: 'Sale',
       },
       {
         imageUrl:
@@ -75,17 +81,18 @@ export class ShowAllPropertiesService {
         description: 'Charming apartment with vintage charm',
         price: 170000,
         id: 4,
-        name: 'Charming Apartment',
+        title: 'Charming Apartment',
         type: 'Apartment',
-        numOfBedrooms: 1,
+        numOfRooms: 1,
         numOfBathrooms: 1,
-        Area: 800,
+        area: 800,
         address: '101 Pine St',
         ownerName: 'Emily Brown',
         ownerImageUrl:
           'https://img.freepik.com/premium-psd/smiling-cartoon-businesswoman-professional-attire-generative-ai_92753-21971.jpg',
         postAddedTime: '2024-05-07T10:00:00Z',
         isForSale: false,
+        status: 'Sale',
       },
       {
         imageUrl:
@@ -93,17 +100,18 @@ export class ShowAllPropertiesService {
         description: 'Cozy apartment in a quiet neighborhood',
         price: 150000,
         id: 2,
-        name: 'Cozy Apartment',
+        title: 'Cozy Apartment',
         type: 'Apartment',
-        numOfBedrooms: 2,
+        numOfRooms: 2,
         numOfBathrooms: 1,
-        Area: 1000,
+        area: 1000,
         address: '456 Elm St',
         ownerName: 'Jane Smith',
         ownerImageUrl:
           'https://img.freepik.com/free-photo/young-business-woman-with-glasses-white-towel-her-head-3d-rendering_1142-51503.jpg',
         postAddedTime: '2024-05-09T09:00:00Z',
         isForSale: true,
+        status: 'Rent',
       },
       {
         imageUrl:
@@ -111,17 +119,18 @@ export class ShowAllPropertiesService {
         description: 'Elegant apartment in a prestigious neighborhood',
         price: 250000,
         id: 5,
-        name: 'Elegant Apartment',
+        title: 'Elegant Apartment',
         type: 'Apartment',
-        numOfBedrooms: 4,
+        numOfRooms: 4,
         numOfBathrooms: 3,
-        Area: 2000,
+        area: 2000,
         address: '222 Maple St',
         ownerName: 'David Wilson',
         ownerImageUrl:
           'https://img.freepik.com/free-photo/young-business-woman-with-glasses-white-towel-her-head-3d-rendering_1142-51503.jpg',
         postAddedTime: '2024-05-06T08:00:00Z',
         isForSale: true,
+        status: 'Rent',
       },
       {
         imageUrl:
@@ -129,22 +138,35 @@ export class ShowAllPropertiesService {
         description: 'Affordable apartment with great amenities',
         price: 120000,
         id: 6,
-        name: 'Affordable Apartment',
+        title: 'Affordable Apartment',
         type: 'Apartment',
-        numOfBedrooms: 1,
+        numOfRooms: 1,
         numOfBathrooms: 1,
-        Area: 600,
+        area: 600,
         address: '333 Cedar St',
         ownerName: 'Sarah Davis',
         ownerImageUrl:
           'https://img.freepik.com/premium-psd/smiling-cartoon-businesswoman-professional-attire-generative-ai_92753-21971.jpg',
         postAddedTime: '2024-05-05T14:00:00Z',
         isForSale: false,
+        status: 'Sale',
       },
     ];
   }
 
   getAllProperties() {
     return this.allApartments;
+  }
+  test(
+    pageNum: number,
+    pageSize: number,
+    numOfRooms: number,
+    priceRange: string,
+    govId: number,
+    cityId: number
+  ): Observable<any> {
+    return this.httpClient.get<any>(
+      `http://localhost:5019/api/Property?pageNum=${pageNum}&pageSize=${pageSize}&numOfRooms=${numOfRooms}&priceRange=${priceRange}&govId=${govId}&cityId=${cityId}`
+    );
   }
 }

@@ -9,7 +9,6 @@ export class PriceColorDirectiveDirective {
 
   constructor(private element: ElementRef) {}
   ngAfterViewInit() {
-    console.log(this.shapeColor);
     this.element.nativeElement.style.backgroundColor = this.shapeColor;
   }
 }
