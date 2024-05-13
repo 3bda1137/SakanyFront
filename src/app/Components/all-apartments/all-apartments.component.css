@@ -381,6 +381,8 @@
   border-color:#6449E7;
   color: white;
 }
+
+
 /* Media query */
 @media (max-width: 768px) {
      .input-field {

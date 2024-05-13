@@ -22,7 +22,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.getHomePageProperties();
   }
-
   getHomePageProperties(): void {
     this.homePagePropertiesService.getRandomProp(5).subscribe({
       next: (response) => {
@@ -45,5 +44,11 @@ export class HomeComponent implements OnInit {
 
   imgUrlTrack(index: number, url: string) {
     return url;
+  }
+
+  gotoAllApartments(): void {
+    this.router
+      .navigateByUrl('/AllApartments')
+      .then(() => window.scrollTo(0, 0));
   }
 }

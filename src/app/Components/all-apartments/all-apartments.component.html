@@ -71,7 +71,7 @@
           </div>
 
           <!-- All Available Apartment -->
-          <div class="container my-5">
+          <div class="container my-5" *ngIf="allApartmentsLoaded; else loadingTemplate">
                <div class="row row-gap-5" *ngIf="allApartments.length > 0; else noResults">
                     <div class="col-lg-4 col-md-6 col-sm-12"
                          *ngFor="let apartment of allApartments; let i = index ;trackBy:propertyTrackBy">
@@ -143,7 +143,17 @@
                          <img src="../../../assets/NotFound.webp" alt="No Results Found Image" class="no-results-image">
                     </div>
                </ng-template>
+
           </div>
+          <!-- Spinner -->
+          <ng-template #loadingTemplate>
+               <div class="spinner-container text-center">
+                    <div class="spinner-border text-primary  " role="status">
+                         <span class="visually-hidden text-primary   ">Loading...</span>
+                    </div>
+                    <p class="fs-3  fw-bold  text-primary ">Loading...</p>
+               </div>
+          </ng-template>
 
           <!-- Custom Pagination -->
           <nav aria-label="Page navigation example" class="my-5 ">
