@@ -358,10 +358,36 @@
   max-width: 500px;
   margin-bottom: 20px;
 }
+.custom-pagination {
+  font-weight: 500;
+  
+}
+
+.custom-pagination .page-link {
+  font-size:1.3rem ;
+
+  cursor: pointer;
+  padding: 10px 20px;
+  color: #6449E7;  
+}
+
+.custom-pagination .page-link:hover {
+  background-color: #f8f9fa;
+  
+}
+
+.custom-pagination .active .page-link {
+  background-color:#6449E7;
+  border-color:#6449E7;
+  color: white;
+}
 /* Media query */
 @media (max-width: 768px) {
      .input-field {
        flex-basis: 100%; 
+     }
+     .custom-pagination .page-link{
+      padding: 5px 8px;
      }
    }
 

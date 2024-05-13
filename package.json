@@ -26,6 +26,7 @@
     "install": "^0.13.0",
     "jwt-decode": "^4.0.0",
     "ngx-owl-carousel-o": "^17.0.0",
+    "ngx-pagination": "^6.0.3",
     "ngx-spinner": "^16.0.2",
     "ngx-wow": "^2.0.1",
     "rxjs": "~7.8.0",

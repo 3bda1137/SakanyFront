@@ -154,10 +154,7 @@ export class ShowAllPropertiesService {
     ];
   }
 
-  getAllProperties() {
-    return this.allApartments;
-  }
-  test(
+  getAllProperties(
     pageNum: number,
     pageSize: number,
     numOfRooms: number,
