@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { IApartment } from '../../Interfaces/iapartment';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -9,7 +11,8 @@ import { City } from '../../Interfaces/city';
 import { GovernorateService } from './../../Services/governorate.service';
 import { ShowAllPropertiesService } from './../../Services/show-all-properties.service';
 import { NgxPaginationModule } from 'ngx-pagination';
-
+import { NgxSpinnerService } from 'ngx-spinner';
+import { NgxSpinnerModule } from 'ngx-spinner';
 @Component({
   selector: 'app-all-apartments',
   standalone: true,
@@ -19,6 +22,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     RentSaleDirectiveDirective,
     PriceColorDirectiveDirective,
     NgxPaginationModule,
+    NgxSpinnerModule,
   ],
   templateUrl: './all-apartments.component.html',
   styleUrls: ['./all-apartments.component.css'],
@@ -41,14 +45,19 @@ export class AllApartmentsComponent implements OnInit {
   cities: City[] = [];
   foundedCities: boolean = true;
   allApartments: IApartment[] = [];
+  allApartmentsLoaded: boolean = false;
+
   arrow_bgImage: string = `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 15.5l-7-9h14l-7 9z" fill="%233a3a3a"/></svg>')`;
 
   constructor(
     private showAllPropertiesService: ShowAllPropertiesService,
-    private governorateService: GovernorateService
+    private governorateService: GovernorateService,
+    private spinner: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
+    this.spinner.show();
+
     this.fetchData();
     this.governorateService.getGovernorates().subscribe({
       next: (response) => {
@@ -87,9 +96,16 @@ export class AllApartmentsComponent implements OnInit {
           this.startPage = response.data.paginationInfo.startPage;
           this.endPage = response.data.paginationInfo.endPage;
           this.totalItems = response.data.paginationInfo.total;
+
+          //Flag that data loaded
+          this.allApartmentsLoaded = true;
+          this.spinner.hide();
         },
         error: (err) => {
           console.log(err);
+          //Flag that data loaded
+          this.allApartmentsLoaded = true;
+          this.spinner.hide();
         },
       });
   }
