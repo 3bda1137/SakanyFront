@@ -8,6 +8,7 @@ import { Governorate } from '../../Interfaces/governorate';
 import { City } from '../../Interfaces/city';
 import { GovernorateService } from './../../Services/governorate.service';
 import { ShowAllPropertiesService } from './../../Services/show-all-properties.service';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-all-apartments',
@@ -17,15 +18,23 @@ import { ShowAllPropertiesService } from './../../Services/show-all-properties.s
     FormsModule,
     RentSaleDirectiveDirective,
     PriceColorDirectiveDirective,
+    NgxPaginationModule,
   ],
   templateUrl: './all-apartments.component.html',
   styleUrls: ['./all-apartments.component.css'],
 })
 export class AllApartmentsComponent implements OnInit {
-  pageNum: number = 1;
+  currentPage: number = 1;
+  totalPages: number = 0;
+  startPage: number = 1;
+  endPage: number = 1;
   pageSize: number = 6;
+  totalItems: number = 0;
+  pageSizeOptions: number[] = [6, 12, 24];
+
+  pageNum: number = 1;
   numOfRooms: number = 0;
-  priceRange: string = ' ';
+  priceRange: string = 'all';
   govId: number = 0;
   cityId: number = 0;
   governorate: Governorate[] = [];
@@ -53,7 +62,7 @@ export class AllApartmentsComponent implements OnInit {
 
   fetchData(): void {
     this.showAllPropertiesService
-      .test(
+      .getAllProperties(
         this.pageNum,
         this.pageSize,
         this.numOfRooms,
@@ -63,7 +72,15 @@ export class AllApartmentsComponent implements OnInit {
       )
       .subscribe({
         next: (response) => {
-          this.allApartments = response.data;
+          console.log(response.data.paginationInfo);
+          this.allApartments = response.data.properties;
+
+          // Extract pagination info
+          this.currentPage = response.data.paginationInfo.currentPage;
+          this.totalPages = response.data.paginationInfo.totalPages;
+          this.startPage = response.data.paginationInfo.startPage;
+          this.endPage = response.data.paginationInfo.endPage;
+          this.totalItems = response.data.paginationInfo.total;
         },
         error: (err) => {
           console.log(err);
@@ -87,10 +104,8 @@ export class AllApartmentsComponent implements OnInit {
   }
 
   selectedPriceRange(price: string): void {
-    if (price !== 'all') {
-      this.priceRange = price;
-      this.fetchData();
-    }
+    this.priceRange = price;
+    this.fetchData();
   }
 
   onChange(event: any): void {
@@ -112,5 +127,20 @@ export class AllApartmentsComponent implements OnInit {
 
   propertyTrackBy(index: number, apartment: IApartment): number {
     return apartment.id;
+  }
+
+  onPageChange(page: number): void {
+    if (page >= 1 && page <= this.totalPages) {
+      this.pageNum = page;
+      this.fetchData();
+    }
+  }
+
+  getPages(): number[] {
+    const pages: number[] = [];
+    for (let i = this.startPage; i <= this.endPage; i++) {
+      pages.push(i);
+    }
+    return pages;
   }
 }
