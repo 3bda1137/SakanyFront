@@ -17,6 +17,7 @@ export class NavbarComponent {
       next: () => {
         if (_AccountService.userInfo.getValue() != null) {
           this.IsLogin = true;
+
           console.log("----------IsLogin----------")
           console.log(this.IsLogin)
         }
@@ -31,8 +32,7 @@ export class NavbarComponent {
 
   
 
-  logout()
-  {
+  logout() {
     this._AccountService.logout();
   }
 }

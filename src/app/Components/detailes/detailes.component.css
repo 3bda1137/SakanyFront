@@ -26,7 +26,7 @@ textarea {
     margin-top: 5px;
     padding: 10px;
     border: 1px solid gray;
-    width: 75%;
+
     outline: none;
     border-radius: 5px;
 }
@@ -42,7 +42,7 @@ textarea {
 .carousel-item img {
     object-fit: cover;
     height: 100%;
-  
+
 }
 
 .carousel-item a {
@@ -76,8 +76,15 @@ textarea {
 
 
 
-.upload{
-    outline:  none;border:  none;
+.upload {
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+#file-chosen {
+    margin-left: 10px;
+    font-size: 16px;
 }
 
 
@@ -87,18 +94,19 @@ textarea {
 
 .rating {
     display: inline-block;
-  }
-  
-  .rating input {
+}
+
+.rating input {
     display: none;
-  }
-  
-  .rating label {
+}
+
+.rating label {
     cursor: pointer;
-    color: #ddd; /* Default color for empty star */
-  }
-  
-  .rating input:checked ~ label {
-    color: #ffd700; /* Color for filled star */
-  }
-  
+    color: #ddd;
+    /* Default color for empty star */
+}
+
+.rating input:checked~label {
+    color: #ffd700;
+    /* Color for filled star */
+}
