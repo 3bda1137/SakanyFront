@@ -78,7 +78,6 @@
                          <div class="box">
                               <div class="for-sale">
                                    For {{ apartment.status }}
-
                               </div>
 
                               <div class="top">
@@ -97,11 +96,6 @@
                                                        }}</span></div>
                                         </div>
                                         <div>
-                                             <span>Bathrooms</span>
-                                             <div><i class="fas fa-shower"></i><span>{{ apartment.numOfBathrooms
-                                                       }}</span></div>
-                                        </div>
-                                        <div>
                                              <span>Type</span>
                                              <div><i class="fa-solid fa-building"></i><span>{{ apartment.type }}</span>
                                              </div>
@@ -112,6 +106,17 @@
                                                   <i class="fas fa-vector-square"></i><span>{{ apartment.area }}<span>Sq
                                                             Ft</span></span>
                                              </div>
+                                        </div>
+                                        <div class="d-flex flex-column align-items-center ">
+                                             <span>Favorite</span>
+                                             <div>
+
+                                                  <i
+                                                       [ngClass]="apartment.isForSale? 'fa-regular fa-heart ' : 'fa-solid fa-heart text-danger '">
+
+                                                  </i>
+                                             </div>
+
                                         </div>
                                    </div>
                                    <div class="price">

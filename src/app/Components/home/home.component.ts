@@ -33,7 +33,9 @@ export class HomeComponent implements OnInit {
           apartment.imageUrl = `${apiUrl}${apartment.imageUrl}`;
         });
 
-        this.imageUrls = this.apartments.map((apartment) => apartment.imageUrl);
+        this.imageUrls = this.apartments
+          .map((apartment) => apartment.imageUrl)
+          .slice(0, 3);
         console.log(this.imageUrls);
       },
       error: (err) => {
