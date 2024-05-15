@@ -1,152 +1,189 @@
 <!-- START available For Rent -->
-<section class="portfolio bg-white-1 my-5 ">
+<section class="portfolio bg-white-1 rec-pro">
      <div class="container">
-          <!--           
           <div class="row">
+               <!-- Search Form -->
                <div class="section-title col-md-5">
                     <form>
-                         <div class="form-group">
-                              <label for="city">City</label>
-                              <div class="input-group">
-                                   <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                         <div class="inner-form">
+                              <div class="input-field first-wrap">
+                                   <div class="input-select">
+                                        <select #govSelected (change)="selectedGov(govSelected.value)" data-trigger=""
+                                             name="choices-single-defaul" (change)="onChange($event)">
+                                             <option disabled selected value=0 class="placeholder">Select Governorate
+                                             </option>
+                                             <option value=0>All</option>
+                                             <option *ngFor="let gov of governorate" value="{{gov.governorateID}}">
+                                                  {{gov.name}}</option>
+
+                                        </select>
                                    </div>
-                                   <select class="custom-select" id="city">
-                                        <option selected>Choose...</option>
-                                        <option value="1">New York</option>
-                                        <option value="2">Los Angeles</option>
-                                        <option value="3">Chicago</option>
-                                   </select>
                               </div>
-                         </div>
-                         <div class="form-group">
-                              <label for="beds">Available Beds</label>
-                              <div class="input-group">
-                                   <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fas fa-bed"></i></span>
+                              <div class="input-field second-wrap">
+                                   <div class="input-select">
+                                        <select #citySelected (change)="selectedCity(citySelected.value)"
+                                             [disabled]="cities.length === 0 ? true : '' " data-trigger=""
+                                             [style.background-color]='cities.length!=0?"#f9f9f9":"gainsboro"'
+                                             [style.background-image]="cities.length === 0 ? 'none' : arrow_bgImage"
+                                             name="choices-single-defaul">
+                                             <option disabled selected value=0 class="placeholder">Select City</option>
+                                             <option value=0>All</option>
+                                             <option *ngFor="let city of cities" [value]="city.id" class="">
+                                                  {{city.name}}
+                                             </option>
+                                        </select>
                                    </div>
-                                   <select class="custom-select" id="beds">
-                                        <option selected>Choose...</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                   </select>
                               </div>
-                         </div>
-                         <div class="form-group">
-                              <label for="price">Price Range</label>
-                              <div class="input-group">
-                                   <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+                              <div class="input-field third-wrap">
+                                   <div class="input-select">
+                                        <select #roomsSelected (change)="selectedRooms(roomsSelected.value)"
+                                             data-trigger="" name="choices-single-defaul">
+                                             <option disabled selected class="placeholder">Number Of Bedrooms</option>
+                                             <option value=0>All</option>
+                                             <option value=1>1</option>
+                                             <option value=2>2</option>
+                                             <option value=3>3</option>
+                                             <option value=4>4</option>
+                                             <option value=5>5</option>
+                                        </select>
                                    </div>
-                                   <select class="custom-select" id="price">
-                                        <option selected>Choose...</option>
-                                        <option value="1">&lt; $100</option>
-                                        <option value="2">$100 - $200</option>
-                                        <option value="3">$200 - $300</option>
-                                        <option value="4">&gt; $300</option>
-                                   </select>
                               </div>
+                              <div class="input-field fourth-wrap">
+                                   <div class="input-select">
+                                        <select #priceRangeSelected
+                                             (change)="selectedPriceRange(priceRangeSelected.value)" data-trigger=""
+                                             name="choices-single-defaul">
+                                             <option disabled selected class="placeholder">Price range</option>
+                                             <option value="all">All</option>
+                                             <option value="<100">less than $100</option>
+                                             <option value="100-500">$100 - $500</option>
+                                             <option value="500-1000">$500 - $1000</option>
+                                             <option value="1000-5000">$1000 - $5000</option>
+                                             <option value=">5000">more than $5000</option>
+                                        </select>
+                                   </div>
+                              </div>
+
+
                          </div>
-                         <button type="submit" class="btn btn-primary">Search</button>
                     </form>
                </div>
-          </div> -->
-
-          <!-- Start All The Apartments -->
-          <div class="row portfolio-items row-gap-3  mt-5">
-
-               <div class="col-md-6">
-                    <div class="card">
-                         <div class="img-container">
-                              <img src="../../../assets/images/slider-01.jpg" alt="">
-                              <button class="show-details-btn">Show Details</button>
-                         </div>
-                         <div class="user-info">
-                              <ul class="more-info">
-                                   <li>Area <span>720 sq ft</span></li>
-                                   <li>Rooms <span>6</span></li>
-                                   <li>Beds <span>2</span></li>
-                                   <li>Baths <span>3</span></li>
-                              </ul>
-                         </div>
-                    </div>
-               </div>
-
-
-               <div class="col-md-6">
-                    <div class="card">
-                         <div class="img-container">
-                              <img src="../../../assets/images/slider-2.jpg" alt="">
-                              <button class="show-details-btn">Show Details</button>
-                         </div>
-                         <div class="user-info">
-                              <ul class="more-info">
-                                   <li>Area <span>720 sq ft</span></li>
-                                   <li>Rooms <span>6</span></li>
-                                   <li>Beds <span>2</span></li>
-                                   <li>Baths <span>3</span></li>
-                              </ul>
-                         </div>
-                    </div>
-               </div>
-
-
-               <div class="col-md-4">
-                    <div class="card">
-                         <div class="img-container">
-                              <img src="../../../assets/images/slider-3.jpg" alt="">
-                              <button class="show-details-btn">Show Details</button>
-                         </div>
-                         <div class="user-info">
-                              <ul class="more-info">
-                                   <li>Area <span>720 sq ft</span></li>
-                                   <li>Rooms <span>6</span></li>
-                                   <li>Beds <span>2</span></li>
-                                   <li>Baths <span>3</span></li>
-                              </ul>
-                         </div>
-                    </div>
-               </div>
-
-
-               <div class="col-md-4">
-                    <div class="card">
-                         <div class="img-container">
-                              <img src="../../../assets/images/slider-01.jpg" alt="">
-                              <button class="show-details-btn">Show Details</button>
-                         </div>
-                         <div class="user-info">
-                              <ul class="more-info">
-                                   <li>Area <span>720 sq ft</span></li>
-                                   <li>Rooms <span>6</span></li>
-                                   <li>Beds <span>2</span></li>
-                                   <li>Baths <span>3</span></li>
-                              </ul>
-                         </div>
-                    </div>
-               </div>
-
-               <div class="col-md-4">
-                    <div class="card">
-                         <div class="img-container">
-                              <img src="../../../assets/images/slider-3.jpg" alt="">
-                              <button class="show-details-btn">Show Details</button>
-                         </div>
-                         <div class="user-info">
-                              <ul class="more-info">
-                                   <li>Area <span>720 sq ft</span></li>
-                                   <li>Rooms <span>6</span></li>
-                                   <li>Beds <span>2</span></li>
-                                   <li>Baths <span>3</span></li>
-                              </ul>
-                         </div>
-                    </div>
-               </div>
           </div>
-          <!-- End All The Apartments -->
+
+          <!-- All Available Apartment -->
+          <div class="container my-5" *ngIf="allApartmentsLoaded; else loadingTemplate">
+               <div class="row row-gap-5" *ngIf="allApartments.length > 0; else noResults">
+                    <div class="col-lg-4 col-md-6 col-sm-12"
+                         *ngFor="let apartment of allApartments; let i = index ;trackBy:propertyTrackBy">
+                         <div class="box">
+                              <div class="for-sale">
+                                   For {{ apartment.status }}
+
+                              </div>
+
+                              <div class="top">
+                                   <img [src]="apartment.imageUrl" alt="" />
+                                   <button class="view-property-btn">View Property</button>
+                              </div>
+                              <div class="bottom">
+                                   <h3 class="apartment-title">{{ apartment.title }}</h3>
+                                   <p class="apartment-location">
+                                        <i class="fa-solid fa-location-dot"></i>{{ apartment.address }}
+                                   </p>
+                                   <div class="advants">
+                                        <div>
+                                             <span>Bedrooms</span>
+                                             <div><i class="fas fa-th-large"></i><span>{{ apartment.numOfRooms
+                                                       }}</span></div>
+                                        </div>
+                                        <div>
+                                             <span>Bathrooms</span>
+                                             <div><i class="fas fa-shower"></i><span>{{ apartment.numOfBathrooms
+                                                       }}</span></div>
+                                        </div>
+                                        <div>
+                                             <span>Type</span>
+                                             <div><i class="fa-solid fa-building"></i><span>{{ apartment.type }}</span>
+                                             </div>
+                                        </div>
+                                        <div>
+                                             <span>Area</span>
+                                             <div>
+                                                  <i class="fas fa-vector-square"></i><span>{{ apartment.area }}<span>Sq
+                                                            Ft</span></span>
+                                             </div>
+                                        </div>
+                                   </div>
+                                   <div class="price">
+                                        <span>{{ apartment.price | currency:'USD':'symbol':'1.0-0' }}</span>
+
+                                   </div>
+                              </div>
+                              <div class="footer">
+                                   <div class="owner-info">
+                                        <div class="owner-details">
+                                             <div class="owner-image">
+                                                  <img [src]="apartment.ownerImageUrl" alt="Owner's Image">
+                                             </div>
+                                             <p class="owner-name">{{ apartment.ownerName }}</p>
+                                        </div>
+                                        <p class="ad-time">{{ apartment.postAddedTime }}</p>
+                                   </div>
+                              </div>
+
+                         </div>
+                    </div>
+               </div>
+
+               <ng-template #noResults>
+                    <div class="text-center">
+                         <p class="no-results-message display-6 ">No results found for your search filters. Please try
+                              different
+                              search criteria.</p>
+                         <img src="../../../assets/NotFound.webp" alt="No Results Found Image" class="no-results-image">
+                    </div>
+               </ng-template>
+
+          </div>
+          <!-- Spinner -->
+          <ng-template #loadingTemplate>
+               <div class="spinner-container text-center">
+                    <div class="spinner-border text-primary  " role="status">
+                         <span class="visually-hidden text-primary   ">Loading...</span>
+                    </div>
+                    <p class="fs-3  fw-bold  text-primary ">Loading...</p>
+               </div>
+          </ng-template>
+
+          <!-- Custom Pagination -->
+          <nav aria-label="Page navigation example" class="my-5 ">
+               <ul class="pagination justify-content-center custom-pagination">
+
+                    <!-- Previous Page Button -->
+                    <li class="page-item" [class.disabled]="currentPage === 1">
+                         <a class="page-link" (click)="onPageChange(currentPage - 1)" aria-label="Previous">
+                              <span aria-hidden="true">&laquo;</span>
+                         </a>
+                    </li>
+
+                    <!-- Page Numbers -->
+                    <li class="page-item" *ngFor="let page of getPages()" [class.active]="currentPage === page">
+                         <a class="page-link" (click)="onPageChange(page)">{{ page }}</a>
+                    </li>
+
+                    <!-- Next Page Button -->
+                    <li class="page-item" [class.disabled]="currentPage === totalPages">
+                         <a class="page-link" (click)="onPageChange(currentPage + 1)" aria-label="Next">
+                              <span aria-hidden="true">&raquo;</span>
+                         </a>
+                    </li>
+
+               </ul>
+          </nav>
+
 
      </div>
+
+
 </section>
 <!-- END available For Rent -->

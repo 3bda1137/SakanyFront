@@ -17,3 +17,12 @@
     border: 5px solid green;
     margin: auto;
 }
+.test1{
+    width: 25%;
+    position: fixed;
+}
+.test2{
+    width: 70%;
+    margin-left: 25%;
+
+}

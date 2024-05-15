@@ -10,13 +10,18 @@ import { LayoutComponent } from './Components/layout/layout.component';
 import { MypropertiesComponent } from './Components/myproperties/myproperties.component';
 import { FavouriteComponent } from './Components/favourite/favourite.component';
 import { DashbordComponent } from './Components/dashbord/dashbord.component';
+
+import { ChangepasswordComponent } from './Components/changepassword/changepassword.component';
 export const routes: Routes = [
-  { path: ' ', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
+    { path: 'AllApartments', component: AllApartmentsComponent },
   { path: 'details', component: DetailesComponent },
   { path: 'login', component: SigninComponent },
   { path: 'register', component: RegisterComponent },
-  //test
+  { path: 'addproperty', component: PropertyComponent },
+  { path: 'changepassword', component: ChangepasswordComponent },
+
 
   {
     path: 'LayOut',

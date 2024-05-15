@@ -1,25 +1,21 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-import { Property } from '../Interfaces/property';
+import { GetTokenService } from './get-token.service';
+
 @Injectable({
   providedIn: 'root'
 })
 export class PropertyService {
-  private apiUrl = 'http://your-api-url.com/properties';
+  private apiUrl = 'http://localhost:5019/api/Property';
+  constructor(private http: HttpClient,private _GetTokenService:GetTokenService) { }
+  addProperty(propertyData: any): Observable<any> {
+    const headers = this._GetTokenService.getHeaders();
+    return this.http.post(this.apiUrl, propertyData, { headers});
+  }
 
-  constructor(private http: HttpClient) { }
-
-  submitProperty(property: Property): Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post<any>(this.apiUrl, property, { headers })
-      .pipe(
-        catchError(error => {
-          console.log("--------------Error-------------");
-          console.log(error)
-          return error; // Handle errors
-        })
-      );
+  addDependency(images: any, id: number): Observable<any> {
+    const headers = this._GetTokenService.getHeaders();
+    return this.http.post(this.apiUrl + `/${id}`, images, { headers});
   }
 }
