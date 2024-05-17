@@ -82,6 +82,7 @@ export class AllApartmentsComponent implements OnInit {
       .subscribe({
         next: (response) => {
           console.log(response.data.paginationInfo);
+          console.log(response.data);
           this.allApartments = response.data.properties;
 
           const apiUrl = 'http://localhost:5019';
